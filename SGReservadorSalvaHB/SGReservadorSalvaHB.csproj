@@ -76,6 +76,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -100,6 +101,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\reservar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AULA ALTHIA.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Aula DAM2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Salon de actos.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\secretaria.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Taller mecanizado.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
