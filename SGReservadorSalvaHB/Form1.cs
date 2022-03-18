@@ -15,6 +15,10 @@ namespace SGReservadorSalvaHB
         public Form1()
         {
             InitializeComponent();
+            if (true)
+            {
+
+            }
         }
     }
 }
