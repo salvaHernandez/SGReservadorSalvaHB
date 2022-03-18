@@ -46,6 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormAdmAulas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAdmAulas.Designer.cs">
+      <DependentUpon>FormAdmAulas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAdmUsu1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAdmUsu1.Designer.cs">
+      <DependentUpon>FormAdmUsu1.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -65,6 +77,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>reservadorDataSet.xsd</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="FormAdmAulas.resx">
+      <DependentUpon>FormAdmAulas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAdmUsu1.resx">
+      <DependentUpon>FormAdmUsu1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </EmbeddedResource>
