@@ -12,6 +12,7 @@ namespace SGReservadorSalvaHB
 {
     public partial class FormLogin : Form
     {
+        reservadorDataSet dsbd = new reservadorDataSet();
         public FormLogin()
         {
             InitializeComponent();
@@ -20,6 +21,36 @@ namespace SGReservadorSalvaHB
         private void FormLogin_Load(object sender, EventArgs e)
         {
             
+        }
+
+        private void btnEntrar_Click(object sender, EventArgs e)
+        {
+            reservadorDataSetTableAdapters.USUARIOSTableAdapter taUsuarios = new reservadorDataSetTableAdapters.USUARIOSTableAdapter();
+            taUsuarios.Fill(dsbd.USUARIOS);
+            bool condicion = false;
+            for (int i = 0; i < dsbd.USUARIOS.Count; i++)
+            {
+                if (dsbd.USUARIOS[i].Borrado == 0 && dsbd.USUARIOS[i].Login == txtUsuario.Text && dsbd.USUARIOS[i].Password == txtPass.Text)
+                {
+                    condicion = true;
+                }
+            }
+            if (condicion)
+            {
+                this.Hide();
+                FormPrincipal f = new FormPrincipal(this);
+                f.Show();
+            } else
+            {
+                MessageBox.Show("Usuario o contraseña incorrecto");
+                txtPass.Clear();
+                txtUsuario.Clear();
+            }
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

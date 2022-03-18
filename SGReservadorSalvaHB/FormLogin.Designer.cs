@@ -82,6 +82,7 @@ namespace SGReservadorSalvaHB
             this.btnEntrar.TabIndex = 4;
             this.btnEntrar.Text = "ENTAR";
             this.btnEntrar.UseVisualStyleBackColor = true;
+            this.btnEntrar.Click += new System.EventHandler(this.btnEntrar_Click);
             // 
             // btnSalir
             // 
@@ -91,6 +92,7 @@ namespace SGReservadorSalvaHB
             this.btnSalir.TabIndex = 5;
             this.btnSalir.Text = "SALIR";
             this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // pctReservar
             // 

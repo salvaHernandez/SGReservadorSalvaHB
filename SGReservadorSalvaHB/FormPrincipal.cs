@@ -12,14 +12,23 @@ namespace SGReservadorSalvaHB
 {
     public partial class FormPrincipal : Form
     {
+        private FormLogin formLogin;
+
         public FormPrincipal()
         {
             InitializeComponent();
         }
 
+        public FormPrincipal(FormLogin formLogin)
+        {
+            InitializeComponent();
+            this.formLogin = formLogin;
+        }
+
         private void tslSalir_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            this.Close();
+            formLogin.Show();
         }
 
         private void FormPrincipal_Load(object sender, EventArgs e)
