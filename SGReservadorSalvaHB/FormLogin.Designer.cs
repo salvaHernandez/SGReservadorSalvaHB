@@ -70,6 +70,7 @@ namespace SGReservadorSalvaHB
             // 
             this.txtPass.Location = new System.Drawing.Point(253, 81);
             this.txtPass.Name = "txtPass";
+            this.txtPass.PasswordChar = '*';
             this.txtPass.Size = new System.Drawing.Size(131, 20);
             this.txtPass.TabIndex = 3;
             // 
@@ -106,7 +107,7 @@ namespace SGReservadorSalvaHB
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkCyan;
-            this.ClientSize = new System.Drawing.Size(422, 207);
+            this.ClientSize = new System.Drawing.Size(436, 207);
             this.Controls.Add(this.pctReservar);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnEntrar);
