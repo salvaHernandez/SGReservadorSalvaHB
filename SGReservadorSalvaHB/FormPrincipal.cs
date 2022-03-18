@@ -16,5 +16,10 @@ namespace SGReservadorSalvaHB
         {
             InitializeComponent();
         }
+
+        private void tslSalir_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
