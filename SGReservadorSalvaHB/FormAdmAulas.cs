@@ -31,5 +31,43 @@ namespace SGReservadorSalvaHB
             this.aULASTableAdapter.Fill(this.reservadorDataSet.AULAS);
 
         }
+
+        private void anadirFoto()
+        {
+            string miCarpetaOrigen = System.IO.Path.Combine(Application.StartupPath, "fotos\\");
+            openFileDialog1.InitialDirectory = miCarpetaOrigen;
+
+            openFileDialog1.Filter = "image files|*.jpg;*.png;*.gif;*.ico;.*;";
+
+            DialogResult dres = openFileDialog1.ShowDialog();
+
+            if (dres == DialogResult.Abort)
+                return;
+            if (dres == DialogResult.Cancel)
+                return;
+
+            //Se muestra la imagen en el PictureBox directamente de la ruta devuelta por el OpenFileDialog
+            fotoPictureBox.Image = Image.FromFile(openFileDialog1.FileName);
+        }
+
+        private void btnImagen_Click(object sender, EventArgs e)
+        {
+            anadirFoto();
+        }
+
+        private void bindingNavigatorDeleteItem_Click(object sender, EventArgs e)
+        {
+            DialogResult resp = MessageBox.Show("¿Esta seguro de querer eliminar esta pista?", "BORRAR", MessageBoxButtons.YesNo, MessageBoxIcon.Hand);
+            if (resp == DialogResult.Yes)
+            {
+   
+                    aULASTableAdapter.BorradoLogicoAulas(cod_aulaTextBox.Text);
+                    MessageBox.Show("Pista eliminada correctamente", "BORRADA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    reservadorDataSet.AULAS.Clear();
+                    aULASTableAdapter.Fill(reservadorDataSet.AULAS);
+
+            }
+        }
     }
 }
