@@ -18,6 +18,7 @@ namespace SGReservadorSalvaHB
             InitializeComponent();
         }
 
+
         private void FormLogin_Load(object sender, EventArgs e)
         {
             
