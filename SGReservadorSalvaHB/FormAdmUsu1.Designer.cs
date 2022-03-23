@@ -42,6 +42,10 @@ namespace SGReservadorSalvaHB
             this.dtgPassword = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dtgEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dtgPerfil = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnInsertar = new System.Windows.Forms.Button();
+            this.btnModificar = new System.Windows.Forms.Button();
+            this.btnBorrar = new System.Windows.Forms.Button();
+            this.btnShowAll = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvUser)).BeginInit();
             this.SuspendLayout();
             // 
@@ -160,11 +164,68 @@ namespace SGReservadorSalvaHB
             this.dtgPerfil.Name = "dtgPerfil";
             this.dtgPerfil.ReadOnly = true;
             // 
+            // btnInsertar
+            // 
+            this.btnInsertar.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnInsertar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.btnInsertar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnInsertar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnInsertar.Location = new System.Drawing.Point(213, 576);
+            this.btnInsertar.Name = "btnInsertar";
+            this.btnInsertar.Size = new System.Drawing.Size(75, 23);
+            this.btnInsertar.TabIndex = 10;
+            this.btnInsertar.Text = "INSERTAR";
+            this.btnInsertar.UseVisualStyleBackColor = true;
+            // 
+            // btnModificar
+            // 
+            this.btnModificar.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnModificar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.btnModificar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnModificar.Location = new System.Drawing.Point(338, 576);
+            this.btnModificar.Name = "btnModificar";
+            this.btnModificar.Size = new System.Drawing.Size(94, 23);
+            this.btnModificar.TabIndex = 11;
+            this.btnModificar.Text = "MODIFICAR";
+            this.btnModificar.UseVisualStyleBackColor = true;
+            // 
+            // btnBorrar
+            // 
+            this.btnBorrar.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnBorrar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.btnBorrar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnBorrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBorrar.Location = new System.Drawing.Point(479, 576);
+            this.btnBorrar.Name = "btnBorrar";
+            this.btnBorrar.Size = new System.Drawing.Size(75, 23);
+            this.btnBorrar.TabIndex = 12;
+            this.btnBorrar.Text = "BORRAR";
+            this.btnBorrar.UseVisualStyleBackColor = true;
+            this.btnBorrar.Click += new System.EventHandler(this.btnBorrar_Click);
+            // 
+            // btnShowAll
+            // 
+            this.btnShowAll.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnShowAll.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.btnShowAll.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnShowAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnShowAll.Location = new System.Drawing.Point(622, 576);
+            this.btnShowAll.Name = "btnShowAll";
+            this.btnShowAll.Size = new System.Drawing.Size(128, 23);
+            this.btnShowAll.TabIndex = 13;
+            this.btnShowAll.Text = "MOSTRAR TODOS";
+            this.btnShowAll.UseVisualStyleBackColor = true;
+            // 
             // FormAdmUsu1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(879, 640);
+            this.Controls.Add(this.btnShowAll);
+            this.Controls.Add(this.btnBorrar);
+            this.Controls.Add(this.btnModificar);
+            this.Controls.Add(this.btnInsertar);
             this.Controls.Add(this.dtgvUser);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.txtEmail);
@@ -200,5 +261,9 @@ namespace SGReservadorSalvaHB
         private System.Windows.Forms.DataGridViewTextBoxColumn dtgPassword;
         private System.Windows.Forms.DataGridViewTextBoxColumn dtgEmail;
         private System.Windows.Forms.DataGridViewTextBoxColumn dtgPerfil;
+        private System.Windows.Forms.Button btnInsertar;
+        private System.Windows.Forms.Button btnModificar;
+        private System.Windows.Forms.Button btnBorrar;
+        private System.Windows.Forms.Button btnShowAll;
     }
 }

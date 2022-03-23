@@ -25,7 +25,7 @@ namespace SGReservadorSalvaHB
             this.formLogin = formLogin;
             if (perfil == 1)
             {
-                usuariosToolStripMenuItem.Visible = false;
+                administrarToolStripMenuItem.Visible = false;
             }
         }
 

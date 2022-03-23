@@ -73,5 +73,17 @@ namespace SGReservadorSalvaHB
 
             }
         }
+
+        private void btnBorrar_Click(object sender, EventArgs e)
+        {
+            if (dtgvUser.SelectedRows.Count > 0)
+            {
+                reservadorDataSetTableAdapters.USUARIOSTableAdapter taUsuarios = new reservadorDataSetTableAdapters.USUARIOSTableAdapter();
+                taUsuarios.Fill(dsbd.USUARIOS, 0);
+                
+
+            }
+
+        }
     }
 }
