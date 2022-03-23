@@ -26,19 +26,24 @@ namespace SGReservadorSalvaHB
         private void btnEntrar_Click(object sender, EventArgs e)
         {
             reservadorDataSetTableAdapters.USUARIOSTableAdapter taUsuarios = new reservadorDataSetTableAdapters.USUARIOSTableAdapter();
-            taUsuarios.Fill(dsbd.USUARIOS);
-            bool condicion = false;
+            taUsuarios.Fill(dsbd.USUARIOS, 0);
+            bool existeUsusario = false;
+            int perfil = 0;
+            
             for (int i = 0; i < dsbd.USUARIOS.Count; i++)
             {
-                if (dsbd.USUARIOS[i].Borrado == 0 && dsbd.USUARIOS[i].Login == txtUsuario.Text && dsbd.USUARIOS[i].Password == txtPass.Text)
+                if (dsbd.USUARIOS[i].Login == txtUsuario.Text && dsbd.USUARIOS[i].Password == txtPass.Text)
                 {
-                    condicion = true;
+                    existeUsusario = true;
+                    perfil = dsbd.USUARIOS[i].Perfil;
                 }
             }
-            if (condicion)
+            if (existeUsusario)
             {
                 this.Hide();
-                FormPrincipal f = new FormPrincipal(this);
+                txtPass.Clear();
+                txtUsuario.Clear();
+                FormPrincipal f = new FormPrincipal(this, perfil);
                 f.Show();
             } else
             {

@@ -3364,10 +3364,10 @@ SELECT Id_reserva, Usuario, Aula, Fecha, Num_hora FROM RESERVAS WHERE (Id_reserv
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[USUARIOS] WHERE (([Login] = @Original_Login) AND ([Password] =" +
-                " @Original_Password) AND ([Email] = @Original_Email) AND ([Perfil] = @Original_P" +
-                "erfil) AND ((@IsNull_Borrado = 1 AND [Borrado] IS NULL) OR ([Borrado] = @Origina" +
-                "l_Borrado)))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [USUARIOS] WHERE (([Login] = @Original_Login) AND ([Password] = @Orig" +
+                "inal_Password) AND ([Email] = @Original_Email) AND ([Perfil] = @Original_Perfil)" +
+                " AND ((@IsNull_Borrado = 1 AND [Borrado] IS NULL) OR ([Borrado] = @Original_Borr" +
+                "ado)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Login", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Login", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Password", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Password", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -3377,9 +3377,9 @@ SELECT Id_reserva, Usuario, Aula, Fecha, Num_hora FROM RESERVAS WHERE (Id_reserv
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Borrado", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Borrado", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[USUARIOS] ([Login], [Password], [Email], [Perfil], [Borrado]) " +
-                "VALUES (@Login, @Password, @Email, @Perfil, @Borrado);\r\nSELECT Login, Password, " +
-                "Email, Perfil, Borrado FROM USUARIOS WHERE (Login = @Login)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [USUARIOS] ([Login], [Password], [Email], [Perfil], [Borrado]) VALUES" +
+                " (@Login, @Password, @Email, @Perfil, @Borrado);\r\nSELECT Login, Password, Email," +
+                " Perfil, Borrado FROM USUARIOS WHERE (Login = @Login)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Login", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Login", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Password", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Password", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -3388,7 +3388,7 @@ SELECT Id_reserva, Usuario, Aula, Fecha, Num_hora FROM RESERVAS WHERE (Id_reserv
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Borrado", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Borrado", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[USUARIOS] SET [Login] = @Login, [Password] = @Password, [Email] = @Email, [Perfil] = @Perfil, [Borrado] = @Borrado WHERE (([Login] = @Original_Login) AND ([Password] = @Original_Password) AND ([Email] = @Original_Email) AND ([Perfil] = @Original_Perfil) AND ((@IsNull_Borrado = 1 AND [Borrado] IS NULL) OR ([Borrado] = @Original_Borrado)));
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [USUARIOS] SET [Login] = @Login, [Password] = @Password, [Email] = @Email, [Perfil] = @Perfil, [Borrado] = @Borrado WHERE (([Login] = @Original_Login) AND ([Password] = @Original_Password) AND ([Email] = @Original_Email) AND ([Perfil] = @Original_Perfil) AND ((@IsNull_Borrado = 1 AND [Borrado] IS NULL) OR ([Borrado] = @Original_Borrado)));
 SELECT Login, Password, Email, Perfil, Borrado FROM USUARIOS WHERE (Login = @Login)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Login", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Login", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -3414,19 +3414,34 @@ SELECT Login, Password, Email, Perfil, Borrado FROM USUARIOS WHERE (Login = @Log
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Login, Password, Email, Perfil, Borrado FROM dbo.USUARIOS";
+            this._commandCollection[0].CommandText = "SELECT        Login, Password, Email, Perfil, Borrado\r\nFROM            USUARIOS\r\n" +
+                "WHERE        (Borrado = @Param1)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Param1", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Borrado", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = "SELECT Borrado, Email, Login, Password, Perfil FROM USUARIOS WHERE (Perfil = @Par" +
+                "am1) AND (Borrado = @Param2)";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Param1", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Perfil", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Param2", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Borrado", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(reservadorDataSet.USUARIOSDataTable dataTable) {
+        public virtual int Fill(reservadorDataSet.USUARIOSDataTable dataTable, global::System.Nullable<int> Param1) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((Param1.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((int)(Param1.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -3438,8 +3453,52 @@ SELECT Login, Password, Email, Perfil, Borrado FROM USUARIOS WHERE (Login = @Log
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual reservadorDataSet.USUARIOSDataTable GetData() {
+        public virtual reservadorDataSet.USUARIOSDataTable GetData(global::System.Nullable<int> Param1) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((Param1.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((int)(Param1.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            reservadorDataSet.USUARIOSDataTable dataTable = new reservadorDataSet.USUARIOSDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByPerfil(reservadorDataSet.USUARIOSDataTable dataTable, int Param1, global::System.Nullable<int> Param2) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(Param1));
+            if ((Param2.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((int)(Param2.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual reservadorDataSet.USUARIOSDataTable GetDataByPerfil(int Param1, global::System.Nullable<int> Param2) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(Param1));
+            if ((Param2.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((int)(Param2.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
             reservadorDataSet.USUARIOSDataTable dataTable = new reservadorDataSet.USUARIOSDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;

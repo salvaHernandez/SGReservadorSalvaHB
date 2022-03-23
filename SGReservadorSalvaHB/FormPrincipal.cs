@@ -19,10 +19,14 @@ namespace SGReservadorSalvaHB
             InitializeComponent();
         }
 
-        public FormPrincipal(FormLogin formLogin)
+        public FormPrincipal(FormLogin formLogin, int perfil)
         {
             InitializeComponent();
             this.formLogin = formLogin;
+            if (perfil == 1)
+            {
+                usuariosToolStripMenuItem.Visible = false;
+            }
         }
 
         private void tslSalir_Click(object sender, EventArgs e)
