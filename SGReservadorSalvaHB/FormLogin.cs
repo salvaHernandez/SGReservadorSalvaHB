@@ -57,5 +57,14 @@ namespace SGReservadorSalvaHB
         {
             Application.Exit();
         }
+
+        private void btnEntrar_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                MessageBox.Show("VAAAMOS");
+            }
+
+        }
     }
 }
