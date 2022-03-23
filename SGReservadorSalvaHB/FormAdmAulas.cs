@@ -19,9 +19,14 @@ namespace SGReservadorSalvaHB
 
         private void aULASBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
-            this.Validate();
-            this.aULASBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.reservadorDataSet);
+            DialogResult resp = MessageBox.Show("¿Desea guardar los cambios?", "GUARDAR", MessageBoxButtons.YesNo, MessageBoxIcon.Hand);
+            if (resp == DialogResult.Yes)
+            {
+                this.Validate();
+                this.aULASBindingSource.EndEdit();
+                this.tableAdapterManager.UpdateAll(this.reservadorDataSet);
+            }
+            
 
         }
 
@@ -57,12 +62,12 @@ namespace SGReservadorSalvaHB
 
         private void bindingNavigatorDeleteItem_Click(object sender, EventArgs e)
         {
-            DialogResult resp = MessageBox.Show("¿Esta seguro de querer eliminar esta pista?", "BORRAR", MessageBoxButtons.YesNo, MessageBoxIcon.Hand);
+            DialogResult resp = MessageBox.Show("¿Esta seguro de querer eliminar este Aula?", "BORRAR", MessageBoxButtons.YesNo, MessageBoxIcon.Hand);
             if (resp == DialogResult.Yes)
             {
    
                     aULASTableAdapter.BorradoLogicoAulas(cod_aulaTextBox.Text);
-                    MessageBox.Show("Pista eliminada correctamente", "BORRADA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Aula eliminada correctamente", "BORRADA", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     reservadorDataSet.AULAS.Clear();
                     aULASTableAdapter.Fill(reservadorDataSet.AULAS);
