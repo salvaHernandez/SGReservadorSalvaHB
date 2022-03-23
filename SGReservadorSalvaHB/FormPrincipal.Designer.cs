@@ -64,14 +64,14 @@
             // aulasToolStripMenuItem
             // 
             this.aulasToolStripMenuItem.Name = "aulasToolStripMenuItem";
-            this.aulasToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.aulasToolStripMenuItem.Size = new System.Drawing.Size(148, 26);
             this.aulasToolStripMenuItem.Text = "Aulas";
             this.aulasToolStripMenuItem.Click += new System.EventHandler(this.aulasToolStripMenuItem_Click);
             // 
             // usuariosToolStripMenuItem
             // 
             this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
-            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(148, 26);
             this.usuariosToolStripMenuItem.Text = "Usuarios";
             this.usuariosToolStripMenuItem.Click += new System.EventHandler(this.usuariosToolStripMenuItem_Click);
             // 
@@ -80,6 +80,7 @@
             this.reservasToolStripMenuItem.Name = "reservasToolStripMenuItem";
             this.reservasToolStripMenuItem.Size = new System.Drawing.Size(80, 24);
             this.reservasToolStripMenuItem.Text = "Reservas";
+            this.reservasToolStripMenuItem.Click += new System.EventHandler(this.reservasToolStripMenuItem_Click);
             // 
             // informesToolStripMenuItem
             // 

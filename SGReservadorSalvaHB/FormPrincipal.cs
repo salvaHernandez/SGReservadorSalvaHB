@@ -87,5 +87,29 @@ namespace SGReservadorSalvaHB
                 s.Show();
             }
         }
+
+        private void reservasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.MdiChildren.Length > 0)
+            {
+                if (this.MdiChildren[0].Name != "FormReservas")
+                {
+                    this.MdiChildren[0].Close();
+
+                    FormReservas s = new FormReservas();
+                    s.MdiParent = this;
+                    s.Dock = DockStyle.Fill;
+                    s.Show();
+                }
+
+            }
+            else
+            {
+                FormReservas s = new FormReservas();
+                s.MdiParent = this;
+                s.Dock = DockStyle.Fill;
+                s.Show();
+            }
+        }
     }
 }

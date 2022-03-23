@@ -2296,7 +2296,7 @@ SELECT Cod_aula, Descripcion, Foto, Borrado FROM AULAS WHERE (Cod_aula = @Cod_au
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[3];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT Cod_aula, Descripcion, Foto, Borrado\r\nFROM     AULAS\r\nWHERE  (Borrado = 0)" +
@@ -2307,6 +2307,12 @@ SELECT Cod_aula, Descripcion, Foto, Borrado FROM AULAS WHERE (Cod_aula = @Cod_au
             this._commandCollection[1].CommandText = "UPDATE AULAS\r\nSET          Borrado = - 1\r\nWHERE  (Cod_aula = @Original_C); \r\n";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_C", global::System.Data.SqlDbType.VarChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "Cod_aula", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[2].Connection = this.Connection;
+            this._commandCollection[2].CommandText = "SELECT Cod_aula, Descripcion, Foto, Borrado\r\nFROM     AULAS\r\nWHERE  (Descripcion " +
+                "= @param)";
+            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@param", global::System.Data.SqlDbType.VarChar, 200, global::System.Data.ParameterDirection.Input, 0, 0, "Descripcion", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2328,6 +2334,42 @@ SELECT Cod_aula, Descripcion, Foto, Borrado FROM AULAS WHERE (Cod_aula = @Cod_au
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual reservadorDataSet.AULASDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            reservadorDataSet.AULASDataTable dataTable = new reservadorDataSet.AULASDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByDescripcion(reservadorDataSet.AULASDataTable dataTable, string param) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
+            if ((param == null)) {
+                throw new global::System.ArgumentNullException("param");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(param));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual reservadorDataSet.AULASDataTable GetDataByDescripcion(string param) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
+            if ((param == null)) {
+                throw new global::System.ArgumentNullException("param");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(param));
+            }
             reservadorDataSet.AULASDataTable dataTable = new reservadorDataSet.AULASDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
