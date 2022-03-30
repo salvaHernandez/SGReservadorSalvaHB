@@ -250,7 +250,6 @@ namespace SGReservadorSalvaHB
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormAdmUsu1";
             this.Text = "FormAdmUsu1";
-            this.Load += new System.EventHandler(this.FormAdmUsu1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgvUser)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

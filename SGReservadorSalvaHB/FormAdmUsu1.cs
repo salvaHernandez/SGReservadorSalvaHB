@@ -69,52 +69,35 @@ namespace SGReservadorSalvaHB
             cmbPerfil.Text = "";
         }
 
-        private void FormAdmUsu1_Load(object sender, EventArgs e)
-        {
 
-        }
-
-        private void dtgvUser_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-           
-        }
 
         private void btnBorrar_Click(object sender, EventArgs e)
         {
             if (dtgvUser.SelectedRows.Count > 0)
             {
                 reservadorDataSetTableAdapters.USUARIOSTableAdapter taUsuarios = new reservadorDataSetTableAdapters.USUARIOSTableAdapter();
-                taUsuarios.FillByLogin(dsbd.USUARIOS, dtgvUser.SelectedRows[0].Cells[0].Value.ToString(), 0);
-                
+                taUsuarios.UpdateDelete(dsbd.USUARIOS, 1, dtgvUser.SelectedRows[0].Cells[0].Value.ToString());
                 if (dsbd.USUARIOS.Count > 0)
                 {
-                    dsbd.USUARIOS[0].Borrado = 1;
-                    MessageBox.Show("Usuario " + txtLogin.Text + " Borrado");
-                    CargarDataGridView(cmbPerfiles.SelectedIndex);
-
-                } else
-                {
-                    MessageBox.Show("El usuario " + txtLogin + " no existe");
+                    MessageBox.Show("Usuario " + dtgvUser.SelectedRows[0].Cells[0].Value.ToString() + " Borrado");
+                    CargarDataGridView(0);
                 }
-            } else
-            {
-                MessageBox.Show("Para borrar un usuario tienes que seleccionar uno de la tabla");
-            }
+            } else MessageBox.Show("Para borrar un usuario tienes que seleccionar uno de la tabla");
 
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            reservadorDataSetTableAdapters.USUARIOSTableAdapter taUsuarios = new reservadorDataSetTableAdapters.USUARIOSTableAdapter();
-            int perf = cmbPerfil.SelectedIndex + 1;
-            taUsuarios.FillByLogin(dsbd.USUARIOS, txtLogin.Text, 0);
-            if (dsbd.USUARIOS.Count > 0) {
-                dsbd.USUARIOS[0].Login = txtLogin.Text;
-                dsbd.USUARIOS[0].Password = txtPassword.Text;
-                dsbd.USUARIOS[0].Email = txtEmail.Text;
-                dsbd.USUARIOS[0].AcceptChanges();
+            if (compruebaTxt())
+            {
+                reservadorDataSetTableAdapters.USUARIOSTableAdapter taUsuarios = new reservadorDataSetTableAdapters.USUARIOSTableAdapter();
+                int perf = cmbPerfil.SelectedIndex + 1;
+                taUsuarios.UpdateUsuario(dsbd.USUARIOS, txtPassword.Text, txtEmail.Text, perf, txtLogin.Text);
+                if (dsbd.USUARIOS.Count > 0)
+                {
+                    CargarDataGridView(cmbPerfiles.SelectedIndex);
+                }
             }
-
 
         }
 
@@ -134,15 +117,55 @@ namespace SGReservadorSalvaHB
 
         private void btnInsertar_Click(object sender, EventArgs e)
         {
-            reservadorDataSetTableAdapters.USUARIOSTableAdapter taUsuarios = new reservadorDataSetTableAdapters.USUARIOSTableAdapter();
-            taUsuarios.FillByAloneLogin(dsbd.USUARIOS, txtLogin.Text);
-            
-            if (dsbd.USUARIOS.Count < 1)
+            if (compruebaTxt())
             {
-                int perfil = cmbPerfil.SelectedIndex + 1;
-                taUsuarios.InsertUsuario(txtLogin.Text, txtPassword.Text, txtEmail.Text, perfil, 0);
-                
+                reservadorDataSetTableAdapters.USUARIOSTableAdapter taUsuarios = new reservadorDataSetTableAdapters.USUARIOSTableAdapter();
+                taUsuarios.FillByAloneLogin(dsbd.USUARIOS, txtLogin.Text);
+
+                if (dsbd.USUARIOS.Count < 1)
+                {
+                    int perfil = cmbPerfil.SelectedIndex + 1;
+                    taUsuarios.InsertUsuario(txtLogin.Text, txtPassword.Text, txtEmail.Text, perfil, 0);
+                    CargarDataGridView(0);
+                }
+                else MessageBox.Show("El usuario " + txtLogin.Text + " ya existe, cambialo");
+
             }
+        }
+
+        public bool compruebaTxt()
+        {
+            bool camposRellenados = true;
+            if (!txtLogin.Text.Trim().Equals(""))
+            {
+                if (!txtPassword.Text.Trim().Equals(""))
+                {
+                    if (!txtEmail.Text.Trim().Equals(""))
+                    {
+                        if (cmbPerfil.Text.Trim().Equals(""))
+                        {
+                            camposRellenados = false;
+                            MessageBox.Show("Selecciona un perfil, Tienes que rellenar todos los campos");
+                        }
+                    }
+                    else
+                    {
+                        camposRellenados = false;
+                        MessageBox.Show("El campo Email está vacio, Tienes que rellenar todos los campos");
+                    }
+                }
+                else
+                {
+                    camposRellenados = false;
+                    MessageBox.Show("El campo Password está vacio, Tienes que rellenar todos los campos");
+                }
+            } else
+            {
+                camposRellenados = false;
+                MessageBox.Show("El campo login está vacio, Tienes que rellenar todos los campos");
+            }
+
+            return camposRellenados;
         }
     }
 }
