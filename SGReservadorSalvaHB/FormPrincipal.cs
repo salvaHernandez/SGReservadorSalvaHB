@@ -26,6 +26,7 @@ namespace SGReservadorSalvaHB
             if (perfil == 1)
             {
                 administrarToolStripMenuItem.Visible = false;
+                informesToolStripMenuItem.Visible = false;
             }
         }
 
@@ -66,50 +67,41 @@ namespace SGReservadorSalvaHB
 
         private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (this.MdiChildren.Length > 0)
+            if (this.MdiChildren.Length > 0 && this.MdiChildren[0].Name != "FormAdmUsu1")
             {
-                if (this.MdiChildren[0].Name != "FormAdmUsu1")
-                {
                     this.MdiChildren[0].Close();
-
-                    FormAdmUsu1 s = new FormAdmUsu1();
-                    s.MdiParent = this;
-                    s.Dock = DockStyle.Fill;
-                    s.Show();
-                }
-
             }
-            else
-            {
-                FormAdmUsu1 s = new FormAdmUsu1();
-                s.MdiParent = this;
-                s.Dock = DockStyle.Fill;
-                s.Show();
-            }
+            FormAdmUsu1 s = new FormAdmUsu1();
+            s.MdiParent = this;
+            s.Dock = DockStyle.Fill;
+            s.Show();
         }
 
         private void reservasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (this.MdiChildren.Length > 0)
+            if (this.MdiChildren.Length > 0 && this.MdiChildren[0].Name != "FormReservas")
             {
-                if (this.MdiChildren[0].Name != "FormReservas")
-                {
                     this.MdiChildren[0].Close();
-
-                    FormReservas s = new FormReservas();
-                    s.MdiParent = this;
-                    s.Dock = DockStyle.Fill;
-                    s.Show();
-                }
-
             }
-            else
+            FormReservas s = new FormReservas();
+            s.MdiParent = this;
+            s.Dock = DockStyle.Fill;
+            s.Show();
+
+        }
+
+        private void informesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            if (this.MdiChildren.Length > 0 && this.MdiChildren[0].Name != "FormInformes")
             {
-                FormReservas s = new FormReservas();
-                s.MdiParent = this;
-                s.Dock = DockStyle.Fill;
-                s.Show();
+                this.MdiChildren[0].Close();
             }
+            FormInformes s = new FormInformes();
+            s.MdiParent = this;
+            s.Dock = DockStyle.Fill;
+            s.Show();
+
         }
     }
 }

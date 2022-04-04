@@ -43,10 +43,10 @@ namespace SGReservadorSalvaHB
             this.dtgEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dtgPerfil = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnInsertar = new System.Windows.Forms.Button();
-            this.btnModificar = new System.Windows.Forms.Button();
             this.btnBorrar = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.cmbPerfil = new System.Windows.Forms.ComboBox();
+            this.btnModificar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvUser)).BeginInit();
             this.SuspendLayout();
             // 
@@ -181,20 +181,6 @@ namespace SGReservadorSalvaHB
             this.btnInsertar.UseVisualStyleBackColor = true;
             this.btnInsertar.Click += new System.EventHandler(this.btnInsertar_Click);
             // 
-            // btnModificar
-            // 
-            this.btnModificar.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.btnModificar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
-            this.btnModificar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnModificar.Location = new System.Drawing.Point(338, 576);
-            this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(94, 23);
-            this.btnModificar.TabIndex = 11;
-            this.btnModificar.Text = "MODIFICAR";
-            this.btnModificar.UseVisualStyleBackColor = true;
-            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
-            // 
             // btnBorrar
             // 
             this.btnBorrar.FlatAppearance.BorderColor = System.Drawing.Color.Black;
@@ -226,6 +212,20 @@ namespace SGReservadorSalvaHB
             this.cmbPerfil.Name = "cmbPerfil";
             this.cmbPerfil.Size = new System.Drawing.Size(171, 21);
             this.cmbPerfil.TabIndex = 16;
+            // 
+            // btnModificar
+            // 
+            this.btnModificar.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnModificar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.btnModificar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnModificar.Location = new System.Drawing.Point(338, 576);
+            this.btnModificar.Name = "btnModificar";
+            this.btnModificar.Size = new System.Drawing.Size(94, 23);
+            this.btnModificar.TabIndex = 11;
+            this.btnModificar.Text = "MODIFICAR";
+            this.btnModificar.UseVisualStyleBackColor = true;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // FormAdmUsu1
             // 
@@ -272,9 +272,9 @@ namespace SGReservadorSalvaHB
         private System.Windows.Forms.DataGridViewTextBoxColumn dtgEmail;
         private System.Windows.Forms.DataGridViewTextBoxColumn dtgPerfil;
         private System.Windows.Forms.Button btnInsertar;
-        private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.Button btnBorrar;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cmbPerfil;
+        private System.Windows.Forms.Button btnModificar;
     }
 }

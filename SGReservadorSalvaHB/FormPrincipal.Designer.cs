@@ -48,7 +48,8 @@
             this.tslSalir});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1172, 28);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(879, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "mnuStrip";
             // 
@@ -58,52 +59,54 @@
             this.aulasToolStripMenuItem,
             this.usuariosToolStripMenuItem});
             this.administrarToolStripMenuItem.Name = "administrarToolStripMenuItem";
-            this.administrarToolStripMenuItem.Size = new System.Drawing.Size(100, 24);
+            this.administrarToolStripMenuItem.Size = new System.Drawing.Size(81, 20);
             this.administrarToolStripMenuItem.Text = "Administrar";
             // 
             // aulasToolStripMenuItem
             // 
             this.aulasToolStripMenuItem.Name = "aulasToolStripMenuItem";
-            this.aulasToolStripMenuItem.Size = new System.Drawing.Size(148, 26);
+            this.aulasToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
             this.aulasToolStripMenuItem.Text = "Aulas";
             this.aulasToolStripMenuItem.Click += new System.EventHandler(this.aulasToolStripMenuItem_Click);
             // 
             // usuariosToolStripMenuItem
             // 
             this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
-            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(148, 26);
+            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
             this.usuariosToolStripMenuItem.Text = "Usuarios";
             this.usuariosToolStripMenuItem.Click += new System.EventHandler(this.usuariosToolStripMenuItem_Click);
             // 
             // reservasToolStripMenuItem
             // 
             this.reservasToolStripMenuItem.Name = "reservasToolStripMenuItem";
-            this.reservasToolStripMenuItem.Size = new System.Drawing.Size(80, 24);
+            this.reservasToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
             this.reservasToolStripMenuItem.Text = "Reservas";
             this.reservasToolStripMenuItem.Click += new System.EventHandler(this.reservasToolStripMenuItem_Click);
             // 
             // informesToolStripMenuItem
             // 
             this.informesToolStripMenuItem.Name = "informesToolStripMenuItem";
-            this.informesToolStripMenuItem.Size = new System.Drawing.Size(81, 24);
+            this.informesToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
             this.informesToolStripMenuItem.Text = "Informes";
+            this.informesToolStripMenuItem.Click += new System.EventHandler(this.informesToolStripMenuItem_Click);
             // 
             // tslSalir
             // 
             this.tslSalir.Name = "tslSalir";
-            this.tslSalir.Size = new System.Drawing.Size(52, 24);
+            this.tslSalir.Size = new System.Drawing.Size(41, 20);
             this.tslSalir.Text = "Salir";
             this.tslSalir.Click += new System.EventHandler(this.tslSalir_Click);
             // 
             // FormPrincipal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1172, 802);
+            this.ClientSize = new System.Drawing.Size(879, 640);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FormPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormPrincipal";
