@@ -58,6 +58,7 @@ namespace SGReservadorSalvaHB
             this.btnConsulta1.TabIndex = 12;
             this.btnConsulta1.Text = "CONSULTA A";
             this.btnConsulta1.UseVisualStyleBackColor = true;
+            this.btnConsulta1.Click += new System.EventHandler(this.btnConsulta1_Click);
             // 
             // btnConsulta2
             // 
@@ -71,6 +72,7 @@ namespace SGReservadorSalvaHB
             this.btnConsulta2.TabIndex = 13;
             this.btnConsulta2.Text = "CONSULTA B";
             this.btnConsulta2.UseVisualStyleBackColor = true;
+            this.btnConsulta2.Click += new System.EventHandler(this.btnConsulta2_Click);
             // 
             // btnConsulta3
             // 
@@ -84,6 +86,7 @@ namespace SGReservadorSalvaHB
             this.btnConsulta3.TabIndex = 14;
             this.btnConsulta3.Text = "CONSULTA C";
             this.btnConsulta3.UseVisualStyleBackColor = true;
+            this.btnConsulta3.Click += new System.EventHandler(this.btnConsulta3_Click);
             // 
             // btnConsulta4
             // 
@@ -97,6 +100,7 @@ namespace SGReservadorSalvaHB
             this.btnConsulta4.TabIndex = 15;
             this.btnConsulta4.Text = "CONSULTA D";
             this.btnConsulta4.UseVisualStyleBackColor = true;
+            this.btnConsulta4.Click += new System.EventHandler(this.btnConsulta4_Click);
             // 
             // btnConsulta5
             // 
@@ -110,6 +114,7 @@ namespace SGReservadorSalvaHB
             this.btnConsulta5.TabIndex = 16;
             this.btnConsulta5.Text = "CONSULTA E";
             this.btnConsulta5.UseVisualStyleBackColor = true;
+            this.btnConsulta5.Click += new System.EventHandler(this.btnConsulta5_Click);
             // 
             // FormInformes
             // 
