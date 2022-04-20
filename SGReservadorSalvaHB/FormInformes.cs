@@ -60,36 +60,36 @@ namespace SGReservadorSalvaHB
             {
                 var aulasBorradas = from aul in objBD.AULAS
                                     where aul.Borrado == -1
+                                    orderby aul.Descripcion
                                     select aul.Cod_aula;
 
-                var menosReservas = from res in objBD.RESERVAS
-                                    where aulasBorradas.Contains(res.Aula)
-                                    group res by res.Aula into grupo
-                                    select new
-                                    {
-                                        reservasPorDia = grupo.Count(),
-                                        idAula = grupo.Key
-                                    };
-                if (menosReservas.Count() > 0)
+                MessageBox.Show(aulasBorradas.Count().ToString());
+                if (aulasBorradas.Count() > 0)
                 {
+                    var reservasPorGrupo = from r in objBD.RESERVAS
+                                   where aulasBorradas.Contains(r.Aula)
+                                   group r by r.Aula into grupo
+                                   select new
+                                   {
+                                       numReservas = grupo.Count(),
+                                       aula = grupo.Key
+                                   };
 
+                    var consultaMinNumReserva = reservasPorGrupo.Where(x => x.numReservas == reservasPorGrupo.Min(y => y.numReservas));
 
-                    var consulta = menosReservas.Where(x => x.reservasPorDia == menosReservas.Min(y => y.reservasPorDia));
-
-                    var consultaFinal = from c in consulta
-                                        from aula in objBD.AULAS
-                                        where c.idAula == aula.Cod_aula
+                    var consultaFinal = from a in objBD.AULAS
+                                        from c in consultaMinNumReserva
+                                        where a.Cod_aula == c.aula
+                                        orderby a.Descripcion
                                         select new
                                         {
-                                            aula.Descripcion,
-                                            c.idAula,
-                                            c.reservasPorDia,
+                                            a.Cod_aula,
+                                            a.Descripcion,
+                                            c.numReservas
                                         };
+
                     dataGridView1.DataSource = consultaFinal.ToList();
 
-                } else
-                {
-                    dataGridView1.DataSource = aulasBorradas.ToList();
                 }
             }
         }
@@ -181,22 +181,33 @@ namespace SGReservadorSalvaHB
                 var reservas = from r in objBD.RESERVAS
                                orderby r.Fecha
                                   select r.Fecha;
-                var fecha = reservas.First();
+                DateTime fecha = reservas.First();
 
-                var resMasAntigua = from r in objBD.RESERVAS
-                                    
+
+                var resMasAntigua = from re in objBD.RESERVAS
+                                    where re.Fecha.CompareTo(fecha) < 1
                                     select new
                                     {
-                                        r.Usuario,
-                                        r.Aula
+                                        re.Usuario,
+                                        re.Aula,
+                                        re.Fecha
                                     };
 
-                /*
-                var consultaFinal = from r in resMasAntigua
-                                    from au in objBD.AULAS
-                                    where au.Cod_aula == 
+                if (resMasAntigua.Count() > 0)
+                {
+                    var consultaFinal = from a in objBD.AULAS
+                                        from r in resMasAntigua
+                                        where r.Aula == a.Cod_aula
+                                        select new
+                                        {
+                                            r.Usuario,
+                                            a.Descripcion,
+                                            r.Fecha
+                                        };
 
-                */
+                    dataGridView1.DataSource = consultaFinal.ToList();
+                }
+
             }
         }
     }
