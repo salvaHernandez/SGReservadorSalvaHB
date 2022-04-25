@@ -30,76 +30,32 @@ namespace SGReservadorSalvaHB
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.Label descripcionLabel;
             System.Windows.Forms.Label label1;
-            this.cbxAulas = new System.Windows.Forms.ComboBox();
+            System.Windows.Forms.Label descripcionLabel;
+            this.aULASBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.reservadorDataSet = new SGReservadorSalvaHB.reservadorDataSet();
             this.pboxImagen = new System.Windows.Forms.PictureBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.btnMostrar = new System.Windows.Forms.Button();
-            this.aULASBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.reservadorDataSet = new SGReservadorSalvaHB.reservadorDataSet();
             this.aULASTableAdapter = new SGReservadorSalvaHB.reservadorDataSetTableAdapters.AULASTableAdapter();
             this.tableAdapterManager = new SGReservadorSalvaHB.reservadorDataSetTableAdapters.TableAdapterManager();
-            descripcionLabel = new System.Windows.Forms.Label();
+            this.CBX = new System.Windows.Forms.ComboBox();
             label1 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pboxImagen)).BeginInit();
+            descripcionLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.aULASBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.reservadorDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pboxImagen)).BeginInit();
             this.SuspendLayout();
-            // 
-            // descripcionLabel
-            // 
-            descripcionLabel.AutoSize = true;
-            descripcionLabel.Location = new System.Drawing.Point(278, 122);
-            descripcionLabel.Name = "descripcionLabel";
-            descripcionLabel.Size = new System.Drawing.Size(86, 17);
-            descripcionLabel.TabIndex = 1;
-            descripcionLabel.Text = "Descripcion:";
-            // 
-            // cbxAulas
-            // 
-            this.cbxAulas.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.aULASBindingSource, "Descripcion", true));
-            this.cbxAulas.FormattingEnabled = true;
-            this.cbxAulas.Location = new System.Drawing.Point(370, 119);
-            this.cbxAulas.Name = "cbxAulas";
-            this.cbxAulas.Size = new System.Drawing.Size(121, 24);
-            this.cbxAulas.TabIndex = 2;
-            this.cbxAulas.SelectedIndexChanged += new System.EventHandler(this.cbxAulas_SelectedIndexChanged);
-            // 
-            // pboxImagen
-            // 
-            this.pboxImagen.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.aULASBindingSource, "Foto", true));
-            this.pboxImagen.Location = new System.Drawing.Point(476, 179);
-            this.pboxImagen.Name = "pboxImagen";
-            this.pboxImagen.Size = new System.Drawing.Size(289, 164);
-            this.pboxImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pboxImagen.TabIndex = 3;
-            this.pboxImagen.TabStop = false;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(690, 122);
+            label1.Location = new System.Drawing.Point(518, 99);
+            label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(55, 17);
+            label1.Size = new System.Drawing.Size(43, 13);
             label1.TabIndex = 4;
             label1.Text = "Fecha: ";
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(751, 122);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 22);
-            this.dateTimePicker1.TabIndex = 5;
-            // 
-            // btnMostrar
-            // 
-            this.btnMostrar.Location = new System.Drawing.Point(581, 361);
-            this.btnMostrar.Name = "btnMostrar";
-            this.btnMostrar.Size = new System.Drawing.Size(75, 23);
-            this.btnMostrar.TabIndex = 6;
-            this.btnMostrar.Text = "Mostrar";
-            this.btnMostrar.UseVisualStyleBackColor = true;
             // 
             // aULASBindingSource
             // 
@@ -110,6 +66,35 @@ namespace SGReservadorSalvaHB
             // 
             this.reservadorDataSet.DataSetName = "reservadorDataSet";
             this.reservadorDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // pboxImagen
+            // 
+            this.pboxImagen.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.aULASBindingSource, "Foto", true));
+            this.pboxImagen.Location = new System.Drawing.Point(357, 145);
+            this.pboxImagen.Margin = new System.Windows.Forms.Padding(2);
+            this.pboxImagen.Name = "pboxImagen";
+            this.pboxImagen.Size = new System.Drawing.Size(217, 133);
+            this.pboxImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pboxImagen.TabIndex = 3;
+            this.pboxImagen.TabStop = false;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(563, 99);
+            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(2);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(151, 20);
+            this.dateTimePicker1.TabIndex = 5;
+            // 
+            // btnMostrar
+            // 
+            this.btnMostrar.Location = new System.Drawing.Point(436, 293);
+            this.btnMostrar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnMostrar.Name = "btnMostrar";
+            this.btnMostrar.Size = new System.Drawing.Size(56, 19);
+            this.btnMostrar.TabIndex = 6;
+            this.btnMostrar.Text = "Mostrar";
+            this.btnMostrar.UseVisualStyleBackColor = true;
             // 
             // aULASTableAdapter
             // 
@@ -124,25 +109,45 @@ namespace SGReservadorSalvaHB
             this.tableAdapterManager.UpdateOrder = SGReservadorSalvaHB.reservadorDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             this.tableAdapterManager.USUARIOSTableAdapter = null;
             // 
+            // CBX
+            // 
+            this.CBX.FormattingEnabled = true;
+            this.CBX.Location = new System.Drawing.Point(279, 96);
+            this.CBX.Name = "CBX";
+            this.CBX.Size = new System.Drawing.Size(121, 21);
+            this.CBX.TabIndex = 7;
+            this.CBX.SelectedIndexChanged += new System.EventHandler(this.CBX_SelectedIndexChanged);
+            // 
+            // descripcionLabel
+            // 
+            descripcionLabel.AutoSize = true;
+            descripcionLabel.Location = new System.Drawing.Point(208, 99);
+            descripcionLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            descripcionLabel.Name = "descripcionLabel";
+            descripcionLabel.Size = new System.Drawing.Size(66, 13);
+            descripcionLabel.TabIndex = 1;
+            descripcionLabel.Text = "Descripcion:";
+            // 
             // FormReservas
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1172, 802);
+            this.ClientSize = new System.Drawing.Size(879, 652);
+            this.Controls.Add(this.CBX);
             this.Controls.Add(this.btnMostrar);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(label1);
             this.Controls.Add(this.pboxImagen);
             this.Controls.Add(descripcionLabel);
-            this.Controls.Add(this.cbxAulas);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormReservas";
             this.Text = "FormReservas";
             this.Load += new System.EventHandler(this.FormReservas_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pboxImagen)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.aULASBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.reservadorDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pboxImagen)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -154,9 +159,9 @@ namespace SGReservadorSalvaHB
         private System.Windows.Forms.BindingSource aULASBindingSource;
         private reservadorDataSetTableAdapters.AULASTableAdapter aULASTableAdapter;
         private reservadorDataSetTableAdapters.TableAdapterManager tableAdapterManager;
-        private System.Windows.Forms.ComboBox cbxAulas;
         private System.Windows.Forms.PictureBox pboxImagen;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Button btnMostrar;
+        private System.Windows.Forms.ComboBox CBX;
     }
 }

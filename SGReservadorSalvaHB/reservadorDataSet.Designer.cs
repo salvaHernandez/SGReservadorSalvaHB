@@ -2296,7 +2296,7 @@ SELECT Cod_aula, Descripcion, Foto, Borrado FROM AULAS WHERE (Cod_aula = @Cod_au
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[3];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[4];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT Cod_aula, Descripcion, Foto, Borrado\r\nFROM     AULAS\r\nWHERE  (Borrado = 0)" +
@@ -2309,10 +2309,16 @@ SELECT Cod_aula, Descripcion, Foto, Borrado FROM AULAS WHERE (Cod_aula = @Cod_au
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_C", global::System.Data.SqlDbType.VarChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "Cod_aula", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = "SELECT Cod_aula, Descripcion, Foto, Borrado\r\nFROM     AULAS\r\nWHERE  (Descripcion " +
-                "= @param)";
+            this._commandCollection[2].CommandText = "SELECT        Cod_aula\r\nFROM            AULAS\r\nWHERE        (Descripcion = @paraa" +
+                "aaa)";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@param", global::System.Data.SqlDbType.VarChar, 200, global::System.Data.ParameterDirection.Input, 0, 0, "Descripcion", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@paraaaaa", global::System.Data.SqlDbType.VarChar, 200, global::System.Data.ParameterDirection.Input, 0, 0, "Descripcion", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[3].Connection = this.Connection;
+            this._commandCollection[3].CommandText = "SELECT        Cod_aula, Descripcion, Foto, Borrado\r\nFROM            AULAS\r\nWHERE " +
+                "       (Borrado = 0) AND (Cod_aula = @param)";
+            this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@param", global::System.Data.SqlDbType.VarChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "Cod_aula", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2343,8 +2349,8 @@ SELECT Cod_aula, Descripcion, Foto, Borrado FROM AULAS WHERE (Cod_aula = @Cod_au
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int FillByDescripcion(reservadorDataSet.AULASDataTable dataTable, string param) {
-            this.Adapter.SelectCommand = this.CommandCollection[2];
+        public virtual int FillByCodAula(reservadorDataSet.AULASDataTable dataTable, string param) {
+            this.Adapter.SelectCommand = this.CommandCollection[3];
             if ((param == null)) {
                 throw new global::System.ArgumentNullException("param");
             }
@@ -2362,8 +2368,8 @@ SELECT Cod_aula, Descripcion, Foto, Borrado FROM AULAS WHERE (Cod_aula = @Cod_au
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual reservadorDataSet.AULASDataTable GetDataByDescripcion(string param) {
-            this.Adapter.SelectCommand = this.CommandCollection[2];
+        public virtual reservadorDataSet.AULASDataTable GetDataByCodAula(string param) {
+            this.Adapter.SelectCommand = this.CommandCollection[3];
             if ((param == null)) {
                 throw new global::System.ArgumentNullException("param");
             }
@@ -2590,6 +2596,40 @@ SELECT Cod_aula, Descripcion, Foto, Borrado FROM AULAS WHERE (Cod_aula = @Cod_au
                 }
             }
             return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual string Cositas(string paraaaaa) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[2];
+            if ((paraaaaa == null)) {
+                throw new global::System.ArgumentNullException("paraaaaa");
+            }
+            else {
+                command.Parameters[0].Value = ((string)(paraaaaa));
+            }
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            object returnValue;
+            try {
+                returnValue = command.ExecuteScalar();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            if (((returnValue == null) 
+                        || (returnValue.GetType() == typeof(global::System.DBNull)))) {
+                return null;
+            }
+            else {
+                return ((string)(returnValue));
+            }
         }
     }
     
@@ -3958,7 +3998,7 @@ SELECT Login, Password, Email, Perfil, Borrado FROM USUARIOS WHERE (Login = @Log
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
-        public virtual int UpdateDelete(reservadorDataSet.USUARIOSDataTable uSUARIOS, global::System.Nullable<int> Borrado, string Original_Login) {
+        public virtual int UpdateDelete(global::System.Nullable<int> Borrado, string Original_Login) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[6];
             if ((Borrado.HasValue == true)) {
                 command.Parameters[0].Value = ((int)(Borrado.Value));
@@ -3993,7 +4033,7 @@ SELECT Login, Password, Email, Perfil, Borrado FROM USUARIOS WHERE (Login = @Log
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
-        public virtual int UpdateUsuario(reservadorDataSet.USUARIOSDataTable uSUARIOS, string Password, string Email, int Perfil, string Original_Login) {
+        public virtual int UpdateUsuario(string Password, string Email, int Perfil, string Original_Login) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[7];
             if ((Password == null)) {
                 throw new global::System.ArgumentNullException("Password");

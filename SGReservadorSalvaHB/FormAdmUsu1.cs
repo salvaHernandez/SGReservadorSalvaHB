@@ -73,31 +73,35 @@ namespace SGReservadorSalvaHB
 
         private void btnBorrar_Click(object sender, EventArgs e)
         {
+            
             if (dtgvUser.SelectedRows.Count > 0)
             {
                 reservadorDataSetTableAdapters.USUARIOSTableAdapter taUsuarios = new reservadorDataSetTableAdapters.USUARIOSTableAdapter();
-                taUsuarios.UpdateDelete(dsbd.USUARIOS, 1, dtgvUser.SelectedRows[0].Cells[0].Value.ToString());
+                taUsuarios.UpdateDelete(1, dtgvUser.SelectedRows[0].Cells[0].Value.ToString());
                 if (dsbd.USUARIOS.Count > 0)
                 {
                     MessageBox.Show("Usuario " + dtgvUser.SelectedRows[0].Cells[0].Value.ToString() + " Borrado");
                     CargarDataGridView(0);
                 }
             } else MessageBox.Show("Para borrar un usuario tienes que seleccionar uno de la tabla");
+            
 
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
+            
             if (compruebaTxt())
             {
                 reservadorDataSetTableAdapters.USUARIOSTableAdapter taUsuarios = new reservadorDataSetTableAdapters.USUARIOSTableAdapter();
                 int perf = cmbPerfil.SelectedIndex + 1;
-                taUsuarios.UpdateUsuario(dsbd.USUARIOS, txtPassword.Text, txtEmail.Text, perf, txtLogin.Text);
+                taUsuarios.UpdateUsuario(txtPassword.Text, txtEmail.Text, perf, txtLogin.Text);
                 if (dsbd.USUARIOS.Count > 0)
                 {
                     CargarDataGridView(cmbPerfiles.SelectedIndex);
                 }
             }
+            
 
         }
 

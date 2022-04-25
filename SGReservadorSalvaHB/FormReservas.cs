@@ -13,7 +13,7 @@ namespace SGReservadorSalvaHB
 {
     public partial class FormReservas : Form
     {
-
+        reservadorDataSet dsbd = new reservadorDataSet();
         public FormReservas()
         {
             InitializeComponent();
@@ -30,7 +30,7 @@ namespace SGReservadorSalvaHB
             aULASTableAdapter.Fill(reservadorDataSet.AULAS);
             for (int i = 0; i < reservadorDataSet.AULAS.Count; i++)
             {
-                cbxAulas.Items.Add(reservadorDataSet.AULAS[i].Descripcion);
+                CBX.Items.Add(reservadorDataSet.AULAS[i].Descripcion);
             }
         }
         
@@ -38,12 +38,11 @@ namespace SGReservadorSalvaHB
          * revisar esto
          **/
 
-        private void cbxAulas_SelectedIndexChanged(object sender, EventArgs e)
+
+        private void CBX_SelectedIndexChanged(object sender, EventArgs e)
         {
-            MessageBox.Show("id-> " + cbxAulas.SelectedIndex + ", nombre->" + cbxAulas.Text);
-            aULASTableAdapter.Fill(reservadorDataSet.AULAS);
 
+            aULASTableAdapter.FillByCodAula(reservadorDataSet.AULAS,""+ aULASTableAdapter.Cositas("" + CBX.Text));
         }
-
     }
 }
