@@ -33,8 +33,6 @@ namespace SGReservadorSalvaHB
             System.Windows.Forms.Label label1;
             System.Windows.Forms.Label descripcionLabel;
             this.pboxImagen = new System.Windows.Forms.PictureBox();
-            this.aULASBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.reservadorDataSet = new SGReservadorSalvaHB.reservadorDataSet();
             this.dtpkFecha = new System.Windows.Forms.DateTimePicker();
             this.btnMostrar = new System.Windows.Forms.Button();
             this.CBX = new System.Windows.Forms.ComboBox();
@@ -45,21 +43,23 @@ namespace SGReservadorSalvaHB
             this.dtgcUsuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dtgcHora = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dtgcLibre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnReservar = new System.Windows.Forms.Button();
+            this.aULASBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.reservadorDataSet = new SGReservadorSalvaHB.reservadorDataSet();
             this.aULASTableAdapter = new SGReservadorSalvaHB.reservadorDataSetTableAdapters.AULASTableAdapter();
             this.tableAdapterManager = new SGReservadorSalvaHB.reservadorDataSetTableAdapters.TableAdapterManager();
             this.rESERVASTableAdapter = new SGReservadorSalvaHB.reservadorDataSetTableAdapters.RESERVASTableAdapter();
             this.rESERVASBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.uSUARIOSBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.uSUARIOSTableAdapter = new SGReservadorSalvaHB.reservadorDataSetTableAdapters.USUARIOSTableAdapter();
-            this.btnReservar = new System.Windows.Forms.Button();
             label1 = new System.Windows.Forms.Label();
             descripcionLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pboxImagen)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.aULASBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.reservadorDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.reservasfkaulBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.reservasfkaulBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvHorario)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.aULASBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.reservadorDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rESERVASBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uSUARIOSBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -93,16 +93,6 @@ namespace SGReservadorSalvaHB
             this.pboxImagen.TabIndex = 3;
             this.pboxImagen.TabStop = false;
             // 
-            // aULASBindingSource
-            // 
-            this.aULASBindingSource.DataMember = "AULAS";
-            this.aULASBindingSource.DataSource = this.reservadorDataSet;
-            // 
-            // reservadorDataSet
-            // 
-            this.reservadorDataSet.DataSetName = "reservadorDataSet";
-            this.reservadorDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // dtpkFecha
             // 
             this.dtpkFecha.Location = new System.Drawing.Point(751, 122);
@@ -122,6 +112,7 @@ namespace SGReservadorSalvaHB
             this.btnMostrar.TabIndex = 6;
             this.btnMostrar.Text = "Mostrar";
             this.btnMostrar.UseVisualStyleBackColor = true;
+            this.btnMostrar.Click += new System.EventHandler(this.btnMostrar_Click);
             // 
             // CBX
             // 
@@ -190,6 +181,25 @@ namespace SGReservadorSalvaHB
             this.dtgcLibre.MinimumWidth = 6;
             this.dtgcLibre.Name = "dtgcLibre";
             // 
+            // btnReservar
+            // 
+            this.btnReservar.Location = new System.Drawing.Point(581, 624);
+            this.btnReservar.Name = "btnReservar";
+            this.btnReservar.Size = new System.Drawing.Size(75, 23);
+            this.btnReservar.TabIndex = 10;
+            this.btnReservar.Text = "Reservar";
+            this.btnReservar.UseVisualStyleBackColor = true;
+            // 
+            // aULASBindingSource
+            // 
+            this.aULASBindingSource.DataMember = "AULAS";
+            this.aULASBindingSource.DataSource = this.reservadorDataSet;
+            // 
+            // reservadorDataSet
+            // 
+            this.reservadorDataSet.DataSetName = "reservadorDataSet";
+            this.reservadorDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // aULASTableAdapter
             // 
             this.aULASTableAdapter.ClearBeforeFill = true;
@@ -221,15 +231,6 @@ namespace SGReservadorSalvaHB
             // 
             this.uSUARIOSTableAdapter.ClearBeforeFill = true;
             // 
-            // btnReservar
-            // 
-            this.btnReservar.Location = new System.Drawing.Point(581, 624);
-            this.btnReservar.Name = "btnReservar";
-            this.btnReservar.Size = new System.Drawing.Size(75, 23);
-            this.btnReservar.TabIndex = 10;
-            this.btnReservar.Text = "Reservar";
-            this.btnReservar.UseVisualStyleBackColor = true;
-            // 
             // FormReservas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -250,11 +251,11 @@ namespace SGReservadorSalvaHB
             this.Text = "FormReservas";
             this.Load += new System.EventHandler(this.FormReservas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pboxImagen)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.aULASBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.reservadorDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.reservasfkaulBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.reservasfkaulBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvHorario)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.aULASBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.reservadorDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rESERVASBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.uSUARIOSBindingSource)).EndInit();
             this.ResumeLayout(false);
