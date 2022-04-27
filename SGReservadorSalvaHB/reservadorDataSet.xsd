@@ -91,6 +91,17 @@ WHERE        (Descripcion = @paraaaaa)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
+              <DbSource ConnectionRef="reservadorConnectionString (Settings)" DbObjectName="reservador.dbo.AULAS" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillByAlf" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataAlf" GeneratorSourceName="FillByAlf" GetMethodModifier="Public" GetMethodName="GetDataAlf" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataAlf" UserSourceName="FillByAlf">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT Cod_aula, Descripcion, Foto, Borrado
+FROM     AULAS
+WHERE  (Borrado = 0)
+ORDER BY Descripcion</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
               <DbSource ConnectionRef="reservadorConnectionString (Settings)" DbObjectName="reservador.dbo.AULAS" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillByCodAula" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataByCodAula" GeneratorSourceName="FillByCodAula" GetMethodModifier="Public" GetMethodName="GetDataByCodAula" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataByCodAula" UserSourceName="FillByCodAula">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">

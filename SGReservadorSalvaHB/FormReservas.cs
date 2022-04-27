@@ -28,14 +28,14 @@ namespace SGReservadorSalvaHB
             btnMostrar.Enabled = false;
             pboxImagen.Visible = false;
             dtpkFecha.Enabled = false;
+            btnReservar.Enabled = false;
             //dtpkFecha.MinDate = DateTime.Today;
-
 
         }
 
         private void cargarCbxAulas()
         {
-            aULASTableAdapter.Fill(reservadorDataSet.AULAS);
+            aULASTableAdapter.FillByAlf(reservadorDataSet.AULAS);
             for (int i = 0; i < reservadorDataSet.AULAS.Count; i++)
             {
                 CBX.Items.Add(reservadorDataSet.AULAS[i].Descripcion);
@@ -54,7 +54,7 @@ namespace SGReservadorSalvaHB
             dtpkFecha.Enabled = true;
             aULASTableAdapter.FillByCodAula(reservadorDataSet.AULAS,""+ aULASTableAdapter.Cositas("" + CBX.Text));
 
-            CargarDataGridView(aULASTableAdapter.Cositas("" + CBX.Text), CBX.Text);
+            //CargarDataGridView(aULASTableAdapter.Cositas("" + CBX.Text), CBX.Text);
         }
 
         
@@ -90,7 +90,18 @@ namespace SGReservadorSalvaHB
 
         private void dtpkFecha_ValueChanged(object sender, EventArgs e)
         {
+            //CargarDataGridView(aULASTableAdapter.Cositas("" + CBX.Text), CBX.Text);
+        }
+
+        private void dtgvHorario_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void btnMostrar_Click(object sender, EventArgs e)
+        {
             CargarDataGridView(aULASTableAdapter.Cositas("" + CBX.Text), CBX.Text);
+            btnReservar.Enabled = true;
         }
     }
 
