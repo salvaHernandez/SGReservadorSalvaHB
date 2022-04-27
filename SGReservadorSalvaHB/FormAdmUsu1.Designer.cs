@@ -54,7 +54,7 @@ namespace SGReservadorSalvaHB
             // 
             this.lblPerfil.AutoSize = true;
             this.lblPerfil.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPerfil.Location = new System.Drawing.Point(109, 48);
+            this.lblPerfil.Location = new System.Drawing.Point(51, 339);
             this.lblPerfil.Name = "lblPerfil";
             this.lblPerfil.Size = new System.Drawing.Size(112, 17);
             this.lblPerfil.TabIndex = 0;
@@ -63,7 +63,7 @@ namespace SGReservadorSalvaHB
             // cmbPerfiles
             // 
             this.cmbPerfiles.FormattingEnabled = true;
-            this.cmbPerfiles.Location = new System.Drawing.Point(261, 46);
+            this.cmbPerfiles.Location = new System.Drawing.Point(180, 339);
             this.cmbPerfiles.Name = "cmbPerfiles";
             this.cmbPerfiles.Size = new System.Drawing.Size(161, 21);
             this.cmbPerfiles.TabIndex = 1;
@@ -73,7 +73,7 @@ namespace SGReservadorSalvaHB
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(156, 134);
+            this.label1.Location = new System.Drawing.Point(112, 96);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(43, 17);
             this.label1.TabIndex = 2;
@@ -83,7 +83,7 @@ namespace SGReservadorSalvaHB
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(156, 237);
+            this.label3.Location = new System.Drawing.Point(112, 161);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(43, 17);
             this.label3.TabIndex = 4;
@@ -93,7 +93,7 @@ namespace SGReservadorSalvaHB
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(156, 186);
+            this.label4.Location = new System.Drawing.Point(484, 93);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(64, 17);
             this.label4.TabIndex = 5;
@@ -101,21 +101,21 @@ namespace SGReservadorSalvaHB
             // 
             // txtLogin
             // 
-            this.txtLogin.Location = new System.Drawing.Point(261, 134);
+            this.txtLogin.Location = new System.Drawing.Point(213, 93);
             this.txtLogin.Name = "txtLogin";
             this.txtLogin.Size = new System.Drawing.Size(171, 20);
             this.txtLogin.TabIndex = 6;
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(261, 237);
+            this.txtEmail.Location = new System.Drawing.Point(213, 157);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(171, 20);
             this.txtEmail.TabIndex = 7;
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(261, 183);
+            this.txtPassword.Location = new System.Drawing.Point(572, 93);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(171, 20);
@@ -125,6 +125,9 @@ namespace SGReservadorSalvaHB
             // 
             this.dtgvUser.AllowUserToAddRows = false;
             this.dtgvUser.AllowUserToDeleteRows = false;
+            this.dtgvUser.AllowUserToResizeColumns = false;
+            this.dtgvUser.AllowUserToResizeRows = false;
+            this.dtgvUser.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgvUser.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dtgvUser.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             this.dtgvUser.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -199,7 +202,7 @@ namespace SGReservadorSalvaHB
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(177, 290);
+            this.label2.Location = new System.Drawing.Point(484, 159);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(42, 17);
             this.label2.TabIndex = 15;
@@ -208,7 +211,7 @@ namespace SGReservadorSalvaHB
             // cmbPerfil
             // 
             this.cmbPerfil.FormattingEnabled = true;
-            this.cmbPerfil.Location = new System.Drawing.Point(261, 288);
+            this.cmbPerfil.Location = new System.Drawing.Point(572, 157);
             this.cmbPerfil.Name = "cmbPerfil";
             this.cmbPerfil.Size = new System.Drawing.Size(171, 21);
             this.cmbPerfil.TabIndex = 16;
