@@ -30,7 +30,6 @@ namespace SGReservadorSalvaHB
             dtpkFecha.Enabled = false;
             //dtpkFecha.MinDate = DateTime.Today;
 
-
         }
 
         private void cargarCbxAulas()
@@ -91,6 +90,11 @@ namespace SGReservadorSalvaHB
         private void dtpkFecha_ValueChanged(object sender, EventArgs e)
         {
             CargarDataGridView(aULASTableAdapter.Cositas("" + CBX.Text), CBX.Text);
+        }
+
+        private void dtgvHorario_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 

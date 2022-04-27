@@ -33,32 +33,33 @@ namespace SGReservadorSalvaHB
             System.Windows.Forms.Label label1;
             System.Windows.Forms.Label descripcionLabel;
             this.pboxImagen = new System.Windows.Forms.PictureBox();
+            this.aULASBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.reservadorDataSet = new SGReservadorSalvaHB.reservadorDataSet();
             this.dtpkFecha = new System.Windows.Forms.DateTimePicker();
             this.btnMostrar = new System.Windows.Forms.Button();
             this.CBX = new System.Windows.Forms.ComboBox();
             this.reservasfkaulBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.reservasfkaulBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.dtgvHorario = new System.Windows.Forms.DataGridView();
-            this.aULASBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.reservadorDataSet = new SGReservadorSalvaHB.reservadorDataSet();
+            this.dtgcAula = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dtgcUsuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dtgcHora = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dtgcLibre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.aULASTableAdapter = new SGReservadorSalvaHB.reservadorDataSetTableAdapters.AULASTableAdapter();
             this.tableAdapterManager = new SGReservadorSalvaHB.reservadorDataSetTableAdapters.TableAdapterManager();
             this.rESERVASTableAdapter = new SGReservadorSalvaHB.reservadorDataSetTableAdapters.RESERVASTableAdapter();
             this.rESERVASBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.uSUARIOSBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.uSUARIOSTableAdapter = new SGReservadorSalvaHB.reservadorDataSetTableAdapters.USUARIOSTableAdapter();
-            this.dtgcAula = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dtgcUsuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dtgcHora = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dtgcLibre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnReservar = new System.Windows.Forms.Button();
             label1 = new System.Windows.Forms.Label();
             descripcionLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pboxImagen)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.aULASBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.reservadorDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.reservasfkaulBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.reservasfkaulBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvHorario)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.aULASBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.reservadorDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rESERVASBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uSUARIOSBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -66,50 +67,58 @@ namespace SGReservadorSalvaHB
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(518, 99);
-            label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            label1.Location = new System.Drawing.Point(691, 122);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(43, 13);
+            label1.Size = new System.Drawing.Size(55, 17);
             label1.TabIndex = 4;
             label1.Text = "Fecha: ";
             // 
             // descripcionLabel
             // 
             descripcionLabel.AutoSize = true;
-            descripcionLabel.Location = new System.Drawing.Point(208, 99);
-            descripcionLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            descripcionLabel.Location = new System.Drawing.Point(277, 122);
             descripcionLabel.Name = "descripcionLabel";
-            descripcionLabel.Size = new System.Drawing.Size(66, 13);
+            descripcionLabel.Size = new System.Drawing.Size(86, 17);
             descripcionLabel.TabIndex = 1;
             descripcionLabel.Text = "Descripcion:";
             // 
             // pboxImagen
             // 
             this.pboxImagen.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.aULASBindingSource, "Foto", true));
-            this.pboxImagen.Location = new System.Drawing.Point(357, 145);
-            this.pboxImagen.Margin = new System.Windows.Forms.Padding(2);
+            this.pboxImagen.Location = new System.Drawing.Point(476, 178);
+            this.pboxImagen.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pboxImagen.Name = "pboxImagen";
-            this.pboxImagen.Size = new System.Drawing.Size(217, 133);
+            this.pboxImagen.Size = new System.Drawing.Size(289, 164);
             this.pboxImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pboxImagen.TabIndex = 3;
             this.pboxImagen.TabStop = false;
             // 
+            // aULASBindingSource
+            // 
+            this.aULASBindingSource.DataMember = "AULAS";
+            this.aULASBindingSource.DataSource = this.reservadorDataSet;
+            // 
+            // reservadorDataSet
+            // 
+            this.reservadorDataSet.DataSetName = "reservadorDataSet";
+            this.reservadorDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // dtpkFecha
             // 
-            this.dtpkFecha.Location = new System.Drawing.Point(563, 99);
-            this.dtpkFecha.Margin = new System.Windows.Forms.Padding(2);
+            this.dtpkFecha.Location = new System.Drawing.Point(751, 122);
+            this.dtpkFecha.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtpkFecha.Name = "dtpkFecha";
-            this.dtpkFecha.Size = new System.Drawing.Size(151, 20);
+            this.dtpkFecha.Size = new System.Drawing.Size(200, 22);
             this.dtpkFecha.TabIndex = 5;
             this.dtpkFecha.Value = new System.DateTime(2022, 4, 26, 0, 0, 0, 0);
             this.dtpkFecha.ValueChanged += new System.EventHandler(this.dtpkFecha_ValueChanged);
             // 
             // btnMostrar
             // 
-            this.btnMostrar.Location = new System.Drawing.Point(436, 293);
-            this.btnMostrar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnMostrar.Location = new System.Drawing.Point(581, 361);
+            this.btnMostrar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnMostrar.Name = "btnMostrar";
-            this.btnMostrar.Size = new System.Drawing.Size(56, 19);
+            this.btnMostrar.Size = new System.Drawing.Size(75, 23);
             this.btnMostrar.TabIndex = 6;
             this.btnMostrar.Text = "Mostrar";
             this.btnMostrar.UseVisualStyleBackColor = true;
@@ -117,9 +126,10 @@ namespace SGReservadorSalvaHB
             // CBX
             // 
             this.CBX.FormattingEnabled = true;
-            this.CBX.Location = new System.Drawing.Point(279, 96);
+            this.CBX.Location = new System.Drawing.Point(372, 118);
+            this.CBX.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.CBX.Name = "CBX";
-            this.CBX.Size = new System.Drawing.Size(121, 21);
+            this.CBX.Size = new System.Drawing.Size(160, 24);
             this.CBX.TabIndex = 7;
             this.CBX.SelectedIndexChanged += new System.EventHandler(this.CBX_SelectedIndexChanged);
             // 
@@ -145,21 +155,40 @@ namespace SGReservadorSalvaHB
             this.dtgcUsuario,
             this.dtgcHora,
             this.dtgcLibre});
-            this.dtgvHorario.Location = new System.Drawing.Point(192, 331);
+            this.dtgvHorario.Location = new System.Drawing.Point(256, 407);
+            this.dtgvHorario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dtgvHorario.Name = "dtgvHorario";
+            this.dtgvHorario.RowHeadersWidth = 51;
             this.dtgvHorario.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.dtgvHorario.Size = new System.Drawing.Size(541, 155);
+            this.dtgvHorario.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtgvHorario.Size = new System.Drawing.Size(721, 191);
             this.dtgvHorario.TabIndex = 9;
+            this.dtgvHorario.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvHorario_CellClick);
             // 
-            // aULASBindingSource
+            // dtgcAula
             // 
-            this.aULASBindingSource.DataMember = "AULAS";
-            this.aULASBindingSource.DataSource = this.reservadorDataSet;
+            this.dtgcAula.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dtgcAula.HeaderText = "Aula";
+            this.dtgcAula.MinimumWidth = 6;
+            this.dtgcAula.Name = "dtgcAula";
             // 
-            // reservadorDataSet
+            // dtgcUsuario
             // 
-            this.reservadorDataSet.DataSetName = "reservadorDataSet";
-            this.reservadorDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.dtgcUsuario.HeaderText = "Usuario";
+            this.dtgcUsuario.MinimumWidth = 6;
+            this.dtgcUsuario.Name = "dtgcUsuario";
+            // 
+            // dtgcHora
+            // 
+            this.dtgcHora.HeaderText = "Hora";
+            this.dtgcHora.MinimumWidth = 6;
+            this.dtgcHora.Name = "dtgcHora";
+            // 
+            // dtgcLibre
+            // 
+            this.dtgcLibre.HeaderText = "Libre";
+            this.dtgcLibre.MinimumWidth = 6;
+            this.dtgcLibre.Name = "dtgcLibre";
             // 
             // aULASTableAdapter
             // 
@@ -192,33 +221,22 @@ namespace SGReservadorSalvaHB
             // 
             this.uSUARIOSTableAdapter.ClearBeforeFill = true;
             // 
-            // dtgcAula
+            // btnReservar
             // 
-            this.dtgcAula.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dtgcAula.HeaderText = "Aula";
-            this.dtgcAula.Name = "dtgcAula";
-            // 
-            // dtgcUsuario
-            // 
-            this.dtgcUsuario.HeaderText = "Usuario";
-            this.dtgcUsuario.Name = "dtgcUsuario";
-            // 
-            // dtgcHora
-            // 
-            this.dtgcHora.HeaderText = "Hora";
-            this.dtgcHora.Name = "dtgcHora";
-            // 
-            // dtgcLibre
-            // 
-            this.dtgcLibre.HeaderText = "Libre";
-            this.dtgcLibre.Name = "dtgcLibre";
+            this.btnReservar.Location = new System.Drawing.Point(581, 624);
+            this.btnReservar.Name = "btnReservar";
+            this.btnReservar.Size = new System.Drawing.Size(75, 23);
+            this.btnReservar.TabIndex = 10;
+            this.btnReservar.Text = "Reservar";
+            this.btnReservar.UseVisualStyleBackColor = true;
             // 
             // FormReservas
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(879, 652);
+            this.ClientSize = new System.Drawing.Size(1172, 802);
+            this.Controls.Add(this.btnReservar);
             this.Controls.Add(this.dtgvHorario);
             this.Controls.Add(this.CBX);
             this.Controls.Add(this.btnMostrar);
@@ -227,16 +245,16 @@ namespace SGReservadorSalvaHB
             this.Controls.Add(this.pboxImagen);
             this.Controls.Add(descripcionLabel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FormReservas";
             this.Text = "FormReservas";
             this.Load += new System.EventHandler(this.FormReservas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pboxImagen)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.aULASBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.reservadorDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.reservasfkaulBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.reservasfkaulBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvHorario)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.aULASBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.reservadorDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rESERVASBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.uSUARIOSBindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -265,5 +283,6 @@ namespace SGReservadorSalvaHB
         private System.Windows.Forms.DataGridViewTextBoxColumn dtgcUsuario;
         private System.Windows.Forms.DataGridViewTextBoxColumn dtgcHora;
         private System.Windows.Forms.DataGridViewTextBoxColumn dtgcLibre;
+        private System.Windows.Forms.Button btnReservar;
     }
 }

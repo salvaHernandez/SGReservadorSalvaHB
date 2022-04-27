@@ -21,30 +21,37 @@ namespace SGReservadorSalvaHB
         private void aULASBindingNavigatorSaveItem_Click(object sender, EventArgs e)
 
         {
-            if (cod_aulaTextBox.Text == "")
-            {
-                MessageBox.Show("EL CAMPO CODIGO DE AULA NO PUEDE ESTAR VACIO", "ERROR");
-            }
-            else
-            {
-                if (descripcionTextBox.Text == "")
+            try {
+                if (cod_aulaTextBox.Text == "")
                 {
-                    MessageBox.Show("EL CAMPO DESCRIPCION DEL AULA NO PUEDE ESTAR VACIO", "ERROR");
+                    MessageBox.Show("EL CAMPO CODIGO DE AULA NO PUEDE ESTAR VACIO", "ERROR");
                 }
                 else
                 {
-                    DialogResult resp = MessageBox.Show("¿Desea guardar los cambios?", "GUARDAR", MessageBoxButtons.YesNo, MessageBoxIcon.Hand);
-                    if (resp == DialogResult.Yes)
+                    if (descripcionTextBox.Text == "")
                     {
-                        this.Validate();
-                        this.aULASBindingSource.EndEdit();
-                        this.tableAdapterManager.UpdateAll(this.reservadorDataSet);
+                        MessageBox.Show("EL CAMPO DESCRIPCION DEL AULA NO PUEDE ESTAR VACIO", "ERROR");
+                    }
+                    else
+                    {
+                        DialogResult resp = MessageBox.Show("¿Desea guardar los cambios?", "GUARDAR", MessageBoxButtons.YesNo, MessageBoxIcon.Hand);
+                        if (resp == DialogResult.Yes)
+                        {
+                            this.Validate();
+                            this.aULASBindingSource.EndEdit();
+                            this.tableAdapterManager.UpdateAll(this.reservadorDataSet);
+                        }
+
+                        bindingNavigatorAddNewItem.Enabled = true;
                     }
 
-                    bindingNavigatorAddNewItem.Enabled = true;
                 }
-                
             }
+            catch
+            {
+                MessageBox.Show("EL CODIGO DEL AULA YA EXISTE","ERROR");
+            }
+           
             
         }
 

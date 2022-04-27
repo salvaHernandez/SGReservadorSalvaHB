@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 namespace SGReservadorSalvaHB
 {
+    
     public partial class FormLogin : Form
     {
         reservadorDataSet dsbd = new reservadorDataSet();
@@ -41,10 +42,12 @@ namespace SGReservadorSalvaHB
             }
             if (existeUsusario)
             {
+                GlobalVaribleClass.userName = txtUsuario.Text;
                 this.Hide();
                 txtPass.Clear();
                 txtUsuario.Clear();
                 FormPrincipal f = new FormPrincipal(this, perfil);
+                
                 f.Show();
             }
             else
