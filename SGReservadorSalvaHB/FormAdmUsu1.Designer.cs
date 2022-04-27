@@ -29,8 +29,6 @@ namespace SGReservadorSalvaHB
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblPerfil = new System.Windows.Forms.Label();
-            this.cmbPerfiles = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -47,27 +45,9 @@ namespace SGReservadorSalvaHB
             this.label2 = new System.Windows.Forms.Label();
             this.cmbPerfil = new System.Windows.Forms.ComboBox();
             this.btnModificar = new System.Windows.Forms.Button();
+            this.btnMostrartodos = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvUser)).BeginInit();
             this.SuspendLayout();
-            // 
-            // lblPerfil
-            // 
-            this.lblPerfil.AutoSize = true;
-            this.lblPerfil.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPerfil.Location = new System.Drawing.Point(51, 339);
-            this.lblPerfil.Name = "lblPerfil";
-            this.lblPerfil.Size = new System.Drawing.Size(112, 17);
-            this.lblPerfil.TabIndex = 0;
-            this.lblPerfil.Text = "Mostrar perfiles:";
-            // 
-            // cmbPerfiles
-            // 
-            this.cmbPerfiles.FormattingEnabled = true;
-            this.cmbPerfiles.Location = new System.Drawing.Point(180, 339);
-            this.cmbPerfiles.Name = "cmbPerfiles";
-            this.cmbPerfiles.Size = new System.Drawing.Size(161, 21);
-            this.cmbPerfiles.TabIndex = 1;
-            this.cmbPerfiles.SelectedIndexChanged += new System.EventHandler(this.cmbPerfiles_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -136,7 +116,7 @@ namespace SGReservadorSalvaHB
             this.dtgPassword,
             this.dtgEmail,
             this.dtgPerfil});
-            this.dtgvUser.Location = new System.Drawing.Point(36, 373);
+            this.dtgvUser.Location = new System.Drawing.Point(32, 342);
             this.dtgvUser.MultiSelect = false;
             this.dtgvUser.Name = "dtgvUser";
             this.dtgvUser.ReadOnly = true;
@@ -176,7 +156,7 @@ namespace SGReservadorSalvaHB
             this.btnInsertar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
             this.btnInsertar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnInsertar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnInsertar.Location = new System.Drawing.Point(213, 576);
+            this.btnInsertar.Location = new System.Drawing.Point(245, 555);
             this.btnInsertar.Name = "btnInsertar";
             this.btnInsertar.Size = new System.Drawing.Size(75, 23);
             this.btnInsertar.TabIndex = 10;
@@ -190,7 +170,7 @@ namespace SGReservadorSalvaHB
             this.btnBorrar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
             this.btnBorrar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnBorrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBorrar.Location = new System.Drawing.Point(479, 576);
+            this.btnBorrar.Location = new System.Drawing.Point(511, 555);
             this.btnBorrar.Name = "btnBorrar";
             this.btnBorrar.Size = new System.Drawing.Size(75, 23);
             this.btnBorrar.TabIndex = 12;
@@ -222,7 +202,7 @@ namespace SGReservadorSalvaHB
             this.btnModificar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
             this.btnModificar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnModificar.Location = new System.Drawing.Point(338, 576);
+            this.btnModificar.Location = new System.Drawing.Point(370, 555);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(94, 23);
             this.btnModificar.TabIndex = 11;
@@ -230,11 +210,26 @@ namespace SGReservadorSalvaHB
             this.btnModificar.UseVisualStyleBackColor = true;
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
+            // btnMostrartodos
+            // 
+            this.btnMostrartodos.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnMostrartodos.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.btnMostrartodos.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnMostrartodos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMostrartodos.Location = new System.Drawing.Point(357, 292);
+            this.btnMostrartodos.Name = "btnMostrartodos";
+            this.btnMostrartodos.Size = new System.Drawing.Size(125, 23);
+            this.btnMostrartodos.TabIndex = 17;
+            this.btnMostrartodos.Text = "MOSTRAR";
+            this.btnMostrartodos.UseVisualStyleBackColor = true;
+            this.btnMostrartodos.Click += new System.EventHandler(this.btnMostrartodos_Click);
+            // 
             // FormAdmUsu1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(879, 640);
+            this.Controls.Add(this.btnMostrartodos);
             this.Controls.Add(this.cmbPerfil);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnBorrar);
@@ -247,8 +242,6 @@ namespace SGReservadorSalvaHB
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.cmbPerfiles);
-            this.Controls.Add(this.lblPerfil);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormAdmUsu1";
@@ -260,9 +253,6 @@ namespace SGReservadorSalvaHB
         }
 
         #endregion
-
-        private System.Windows.Forms.Label lblPerfil;
-        private System.Windows.Forms.ComboBox cmbPerfiles;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
@@ -279,5 +269,6 @@ namespace SGReservadorSalvaHB
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cmbPerfil;
         private System.Windows.Forms.Button btnModificar;
+        private System.Windows.Forms.Button btnMostrartodos;
     }
 }
