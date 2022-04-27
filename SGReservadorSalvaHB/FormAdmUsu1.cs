@@ -50,15 +50,18 @@ namespace SGReservadorSalvaHB
 
         private void btnBorrar_Click(object sender, EventArgs e)
         {
-            
             if (dtgvUser.SelectedRows.Count > 0)
             {
-                reservadorDataSetTableAdapters.USUARIOSTableAdapter taUsuarios = new reservadorDataSetTableAdapters.USUARIOSTableAdapter();
-                taUsuarios.UpdateDelete(1, dtgvUser.SelectedRows[0].Cells[0].Value.ToString());
-                if (dsbd.USUARIOS.Count > 0)
+                DialogResult resp = MessageBox.Show("¿Esta seguro de querer eliminar este Usuario?", "BORRAR", MessageBoxButtons.YesNo, MessageBoxIcon.Hand);
+                if (resp == DialogResult.Yes)
                 {
-                    MessageBox.Show("Usuario " + dtgvUser.SelectedRows[0].Cells[0].Value.ToString() + " Borrado");
-                    CargaDtgv();
+                    reservadorDataSetTableAdapters.USUARIOSTableAdapter taUsuarios = new reservadorDataSetTableAdapters.USUARIOSTableAdapter();
+                    taUsuarios.UpdateDelete(-1, dtgvUser.SelectedRows[0].Cells[0].Value.ToString());
+                    if (dsbd.USUARIOS.Count > 0)
+                    {
+                        MessageBox.Show("Usuario " + dtgvUser.SelectedRows[0].Cells[0].Value.ToString() + " Borrado");
+                        CargaDtgv();
+                    }
                 }
             } else MessageBox.Show("Para borrar un usuario tienes que seleccionar uno de la tabla");
             
@@ -67,19 +70,20 @@ namespace SGReservadorSalvaHB
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            
             if (compruebaTxt())
             {
-                reservadorDataSetTableAdapters.USUARIOSTableAdapter taUsuarios = new reservadorDataSetTableAdapters.USUARIOSTableAdapter();
-                int perf = idPerfiles[cmbPerfil.SelectedIndex];
-                taUsuarios.UpdateUsuario(txtPassword.Text, txtEmail.Text, perf, txtLogin.Text);
-                if (dsbd.USUARIOS.Count > 0)
+                DialogResult resp = MessageBox.Show("¿Esta seguro de querer modificar este Usuario?", "MODIFICAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (resp == DialogResult.Yes)
                 {
-                    CargaDtgv();
+                    reservadorDataSetTableAdapters.USUARIOSTableAdapter taUsuarios = new reservadorDataSetTableAdapters.USUARIOSTableAdapter();
+                    int perf = idPerfiles[cmbPerfil.SelectedIndex];
+                    taUsuarios.UpdateUsuario(txtPassword.Text, txtEmail.Text, perf, txtLogin.Text);
+                    if (dsbd.USUARIOS.Count > 0)
+                    {
+                        CargaDtgv();
+                    }
                 }
             }
-            
-
         }
 
         private void dtgvUser_CellClick(object sender, DataGridViewCellEventArgs e)
