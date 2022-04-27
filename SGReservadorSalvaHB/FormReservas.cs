@@ -34,7 +34,7 @@ namespace SGReservadorSalvaHB
 
         private void cargarCbxAulas()
         {
-            aULASTableAdapter.Fill(reservadorDataSet.AULAS);
+            aULASTableAdapter.FillByAlf(reservadorDataSet.AULAS);
             for (int i = 0; i < reservadorDataSet.AULAS.Count; i++)
             {
                 CBX.Items.Add(reservadorDataSet.AULAS[i].Descripcion);
