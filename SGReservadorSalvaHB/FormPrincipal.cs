@@ -27,6 +27,13 @@ namespace SGReservadorSalvaHB
             {
                 administrarToolStripMenuItem.Visible = false;
                 informesToolStripMenuItem.Visible = false;
+                administrarToolStripMenuItem.Enabled = false;
+                informesToolStripMenuItem.Enabled = false;
+            }
+            else
+            {
+                reservasToolStripMenuItem.Visible = false;
+                reservasToolStripMenuItem.Enabled = false;
             }
         }
 
