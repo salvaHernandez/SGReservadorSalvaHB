@@ -103,6 +103,29 @@ namespace SGReservadorSalvaHB
             CargarDataGridView(aULASTableAdapter.Cositas("" + CBX.Text), CBX.Text);
             btnReservar.Enabled = true;
         }
+
+        private void btnReservar_Click(object sender, EventArgs e)
+        {
+            reservadorDataSetTableAdapters.RESERVASTableAdapter taReservas = new reservadorDataSetTableAdapters.RESERVASTableAdapter();
+            if (dtgvHorario.SelectedRows.Count > 0)
+            {
+                if (dtgvHorario.SelectedRows[0].Cells[3].Value.ToString() == "Si")
+                {
+                    for (int i = 0; i < dtgvHorario.SelectedRows.Count; i++) {                      
+                        taReservas.Insert(GlobalVaribleClass.userName, aULASTableAdapter.Cositas("" + CBX.Text).ToString(), dtpkFecha.Value, Int32.Parse(dtgvHorario.SelectedRows[i].Cells[2].Value.ToString()));                    
+                    }
+                    CargarDataGridView(aULASTableAdapter.Cositas("" + CBX.Text), CBX.Text);
+                }
+                else
+                {
+                    MessageBox.Show("El aula no esta disponible en algunas de las horas seleccionadas ");
+                }               
+            }
+            else
+            {
+                MessageBox.Show("Seleccione una fila.");
+            }
+        }
     }
 
 }

@@ -3155,7 +3155,7 @@ SELECT Id_reserva, Usuario, Aula, Fecha, Num_hora FROM RESERVAS WHERE (Id_reserv
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[3];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[4];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT Id_reserva, Usuario, Aula, Fecha, Num_hora FROM dbo.RESERVAS";
@@ -3169,12 +3169,22 @@ SELECT Id_reserva, Usuario, Aula, Fecha, Num_hora FROM RESERVAS WHERE (Id_reserv
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@fecha", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "Fecha", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = "SELECT        Usuario\r\nFROM            RESERVAS\r\nWHERE        (Fecha = @fecha) AN" +
-                "D (Num_hora = @numero) AND (Aula = @aula)";
+            this._commandCollection[2].CommandText = "INSERT INTO RESERVAS\r\n                         (Usuario, Aula, Fecha, Num_hora)\r\n" +
+                "VALUES        (@Usuario,@Aula,@Fecha,@Num_hora); \r\nSELECT Id_reserva, Usuario, A" +
+                "ula, Fecha, Num_hora FROM RESERVAS WHERE (Id_reserva = SCOPE_IDENTITY())";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@fecha", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "Fecha", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@numero", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Num_hora", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@aula", global::System.Data.SqlDbType.VarChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "Aula", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Usuario", global::System.Data.SqlDbType.VarChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "Usuario", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Aula", global::System.Data.SqlDbType.VarChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "Aula", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Fecha", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "Fecha", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Num_hora", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Num_hora", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[3].Connection = this.Connection;
+            this._commandCollection[3].CommandText = "SELECT        Usuario\r\nFROM            RESERVAS\r\nWHERE        (Fecha = @fecha) AN" +
+                "D (Num_hora = @numero) AND (Aula = @aula)";
+            this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@fecha", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "Fecha", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@numero", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Num_hora", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@aula", global::System.Data.SqlDbType.VarChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "Aula", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3411,8 +3421,50 @@ SELECT Id_reserva, Usuario, Aula, Fecha, Num_hora FROM RESERVAS WHERE (Id_reserv
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual string SQLcomp_reserva(string fecha, int numero, string aula) {
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
+        public virtual int Insert1(string Usuario, string Aula, string Fecha, int Num_hora) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[2];
+            if ((Usuario == null)) {
+                throw new global::System.ArgumentNullException("Usuario");
+            }
+            else {
+                command.Parameters[0].Value = ((string)(Usuario));
+            }
+            if ((Aula == null)) {
+                throw new global::System.ArgumentNullException("Aula");
+            }
+            else {
+                command.Parameters[1].Value = ((string)(Aula));
+            }
+            if ((Fecha == null)) {
+                throw new global::System.ArgumentNullException("Fecha");
+            }
+            else {
+                command.Parameters[2].Value = ((string)(Fecha));
+            }
+            command.Parameters[3].Value = ((int)(Num_hora));
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual string SQLcomp_reserva(string fecha, int numero, string aula) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[3];
             if ((fecha == null)) {
                 throw new global::System.ArgumentNullException("fecha");
             }
