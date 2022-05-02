@@ -13,6 +13,8 @@ namespace SGReservadorSalvaHB
     public partial class FormAdmUsu1 : Form
     {
         reservadorDataSet dsbd = new reservadorDataSet();
+        String[] perfiles;
+        int[] idPerfiles;
 
         public FormAdmUsu1()
         {
@@ -23,43 +25,18 @@ namespace SGReservadorSalvaHB
         private void CargarPerfiles()
         {
             reservadorDataSetTableAdapters.PERFILESTableAdapter taReservas = new reservadorDataSetTableAdapters.PERFILESTableAdapter();
-            taReservas.Fill(dsbd.PERFILES);
-
+            taReservas.FillByOrdenAlfa(dsbd.PERFILES);
+            perfiles = new string[dsbd.PERFILES.Count];
+            idPerfiles = new int[dsbd.PERFILES.Count];
             for (int i = 0; i < dsbd.PERFILES.Count; i++)
             {
-                cmbPerfiles.Items.Add(dsbd.PERFILES[i].Descripcion);
-                cmbPerfil.Items.Add(dsbd.PERFILES[i].Descripcion);
+                perfiles[i] = dsbd.PERFILES[i].Descripcion;
+                idPerfiles[i] = dsbd.PERFILES[i].Id_Perfil;
+                cmbPerfil.Items.Add(perfiles[i]);
             }
         }
 
-        private void cmbPerfiles_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            // Cargamos el grid view y le pasamos el perfil en numero que es mas comodo
-            CargarDataGridView(cmbPerfiles.SelectedIndex);
-            
-        }
 
-        private void CargarDataGridView(int perfil)
-        {
-            limpiarTXT();
-            dtgvUser.Rows.Clear();
-            // en la BBDD los registros empiezan por 1 y en el cmb por 0 por eso le sumamos uno
-            perfil += 1;
-            reservadorDataSetTableAdapters.USUARIOSTableAdapter taUsuarios = new reservadorDataSetTableAdapters.USUARIOSTableAdapter();
-            taUsuarios.FillByPerfil(dsbd.USUARIOS, perfil, 0);
-            
-
-            for (int i = 0; i < dsbd.USUARIOS.Count; i ++)
-            {
-                dtgvUser.Rows.Add("");
-                dtgvUser.Rows[i].Cells[0].Value = dsbd.USUARIOS[i].Login;
-                dtgvUser.Rows[i].Cells[1].Value = dsbd.USUARIOS[i].Password;
-                dtgvUser.Rows[i].Cells[2].Value = dsbd.USUARIOS[i].Email;
-                dtgvUser.Rows[i].Cells[3].Value = dsbd.USUARIOS[i].Perfil;
-            }
-
-
-        }
 
         private void limpiarTXT()
         {
@@ -75,14 +52,19 @@ namespace SGReservadorSalvaHB
         {
             if (dtgvUser.SelectedRows.Count > 0)
             {
-                reservadorDataSetTableAdapters.USUARIOSTableAdapter taUsuarios = new reservadorDataSetTableAdapters.USUARIOSTableAdapter();
-                taUsuarios.UpdateDelete(dsbd.USUARIOS, 1, dtgvUser.SelectedRows[0].Cells[0].Value.ToString());
-                if (dsbd.USUARIOS.Count > 0)
+                DialogResult resp = MessageBox.Show("¿Esta seguro de querer eliminar este Usuario?", "BORRAR", MessageBoxButtons.YesNo, MessageBoxIcon.Hand);
+                if (resp == DialogResult.Yes)
                 {
-                    MessageBox.Show("Usuario " + dtgvUser.SelectedRows[0].Cells[0].Value.ToString() + " Borrado");
-                    CargarDataGridView(0);
+                    reservadorDataSetTableAdapters.USUARIOSTableAdapter taUsuarios = new reservadorDataSetTableAdapters.USUARIOSTableAdapter();
+                    taUsuarios.UpdateDelete(-1, dtgvUser.SelectedRows[0].Cells[0].Value.ToString());
+                    if (dsbd.USUARIOS.Count > 0)
+                    {
+                        MessageBox.Show("Usuario " + dtgvUser.SelectedRows[0].Cells[0].Value.ToString() + " Borrado");
+                        CargaDtgv();
+                    }
                 }
             } else MessageBox.Show("Para borrar un usuario tienes que seleccionar uno de la tabla");
+            
 
         }
 
@@ -90,15 +72,18 @@ namespace SGReservadorSalvaHB
         {
             if (compruebaTxt())
             {
-                reservadorDataSetTableAdapters.USUARIOSTableAdapter taUsuarios = new reservadorDataSetTableAdapters.USUARIOSTableAdapter();
-                int perf = cmbPerfil.SelectedIndex + 1;
-                taUsuarios.UpdateUsuario(dsbd.USUARIOS, txtPassword.Text, txtEmail.Text, perf, txtLogin.Text);
-                if (dsbd.USUARIOS.Count > 0)
+                DialogResult resp = MessageBox.Show("¿Esta seguro de querer modificar este Usuario?", "MODIFICAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (resp == DialogResult.Yes)
                 {
-                    CargarDataGridView(cmbPerfiles.SelectedIndex);
+                    reservadorDataSetTableAdapters.USUARIOSTableAdapter taUsuarios = new reservadorDataSetTableAdapters.USUARIOSTableAdapter();
+                    int perf = idPerfiles[cmbPerfil.SelectedIndex];
+                    taUsuarios.UpdateUsuario(txtPassword.Text, txtEmail.Text, perf, txtLogin.Text);
+                    if (dsbd.USUARIOS.Count > 0)
+                    {
+                        CargaDtgv();
+                    }
                 }
             }
-
         }
 
         private void dtgvUser_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -108,10 +93,7 @@ namespace SGReservadorSalvaHB
                 txtLogin.Text = dtgvUser.SelectedRows[0].Cells[0].Value.ToString();
                 txtPassword.Text = dtgvUser.SelectedRows[0].Cells[1].Value.ToString();
                 txtEmail.Text = dtgvUser.SelectedRows[0].Cells[2].Value.ToString();
-                int perfil = int.Parse(dtgvUser.SelectedRows[0].Cells[3].Value.ToString());
-                perfil -= 1;
-                cmbPerfil.SelectedIndex = perfil;
-
+                cmbPerfil.SelectedItem = dtgvUser.SelectedRows[0].Cells[3].Value.ToString();
             }
         }
 
@@ -126,7 +108,7 @@ namespace SGReservadorSalvaHB
                 {
                     int perfil = cmbPerfil.SelectedIndex + 1;
                     taUsuarios.InsertUsuario(txtLogin.Text, txtPassword.Text, txtEmail.Text, perfil, 0);
-                    CargarDataGridView(0);
+                    CargaDtgv();
                 }
                 else MessageBox.Show("El usuario " + txtLogin.Text + " ya existe, cambialo");
 
@@ -136,11 +118,14 @@ namespace SGReservadorSalvaHB
         public bool compruebaTxt()
         {
             bool camposRellenados = true;
-            if (!txtLogin.Text.Trim().Equals(""))
+            txtLogin.Text.Trim();
+            if (!txtLogin.Text.Equals(""))
             {
-                if (!txtPassword.Text.Trim().Equals(""))
+                txtPassword.Text.Trim();
+                if (!txtPassword.Text.Equals(""))
                 {
-                    if (!txtEmail.Text.Trim().Equals(""))
+                    txtEmail.Text.Trim();
+                    if (!txtEmail.Text.Equals(""))
                     {
                         if (cmbPerfil.Text.Trim().Equals(""))
                         {
@@ -166,6 +151,38 @@ namespace SGReservadorSalvaHB
             }
 
             return camposRellenados;
+        }
+
+        private void btnMostrartodos_Click(object sender, EventArgs e)
+        {
+            limpiarTXT();
+
+            CargaDtgv();
+
+        }
+
+
+        private void CargaDtgv ()
+        {
+            dtgvUser.Rows.Clear();
+
+            reservadorDataSetTableAdapters.USUARIOSTableAdapter taUsuarios = new reservadorDataSetTableAdapters.USUARIOSTableAdapter();
+            taUsuarios.Fill(dsbd.USUARIOS, 0);
+
+            for (int i = 0; i < dsbd.USUARIOS.Count; i++)
+            {
+                dtgvUser.Rows.Add("");
+                dtgvUser.Rows[i].Cells[0].Value = dsbd.USUARIOS[i].Login;
+                dtgvUser.Rows[i].Cells[1].Value = dsbd.USUARIOS[i].Password;
+                dtgvUser.Rows[i].Cells[2].Value = dsbd.USUARIOS[i].Email;
+
+
+                reservadorDataSetTableAdapters.PERFILESTableAdapter taPerfiles = new reservadorDataSetTableAdapters.PERFILESTableAdapter();
+                
+
+                dtgvUser.Rows[i].Cells[3].Value = taPerfiles.SQLnombrePerfil(dsbd.USUARIOS[i].Perfil);
+            }
+
         }
     }
 }

@@ -56,6 +56,7 @@ namespace SGReservadorSalvaHB
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.aULASTableAdapter = new SGReservadorSalvaHB.reservadorDataSetTableAdapters.AULASTableAdapter();
             this.tableAdapterManager = new SGReservadorSalvaHB.reservadorDataSetTableAdapters.TableAdapterManager();
+            this.borradoTextBox = new System.Windows.Forms.TextBox();
             cod_aulaLabel = new System.Windows.Forms.Label();
             descripcionLabel = new System.Windows.Forms.Label();
             fotoLabel = new System.Windows.Forms.Label();
@@ -78,7 +79,7 @@ namespace SGReservadorSalvaHB
             // descripcionLabel
             // 
             descripcionLabel.AutoSize = true;
-            descripcionLabel.Location = new System.Drawing.Point(299, 275);
+            descripcionLabel.Location = new System.Drawing.Point(299, 274);
             descripcionLabel.Name = "descripcionLabel";
             descripcionLabel.Size = new System.Drawing.Size(86, 17);
             descripcionLabel.TabIndex = 3;
@@ -120,7 +121,7 @@ namespace SGReservadorSalvaHB
             this.aULASBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.aULASBindingNavigator.Name = "aULASBindingNavigator";
             this.aULASBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.aULASBindingNavigator.Size = new System.Drawing.Size(1172, 31);
+            this.aULASBindingNavigator.Size = new System.Drawing.Size(1172, 27);
             this.aULASBindingNavigator.TabIndex = 0;
             this.aULASBindingNavigator.Text = "bindingNavigator1";
             // 
@@ -130,8 +131,9 @@ namespace SGReservadorSalvaHB
             this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
             this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
             this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(29, 28);
+            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(29, 24);
             this.bindingNavigatorAddNewItem.Text = "Agregar nuevo";
+            this.bindingNavigatorAddNewItem.Click += new System.EventHandler(this.bindingNavigatorAddNewItem_Click);
             // 
             // aULASBindingSource
             // 
@@ -146,7 +148,7 @@ namespace SGReservadorSalvaHB
             // bindingNavigatorCountItem
             // 
             this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(48, 28);
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(48, 24);
             this.bindingNavigatorCountItem.Text = "de {0}";
             this.bindingNavigatorCountItem.ToolTipText = "Número total de elementos";
             // 
@@ -156,7 +158,7 @@ namespace SGReservadorSalvaHB
             this.bindingNavigatorMoveFirstItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveFirstItem.Image")));
             this.bindingNavigatorMoveFirstItem.Name = "bindingNavigatorMoveFirstItem";
             this.bindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(29, 28);
+            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(29, 24);
             this.bindingNavigatorMoveFirstItem.Text = "Mover primero";
             // 
             // bindingNavigatorMovePreviousItem
@@ -165,13 +167,13 @@ namespace SGReservadorSalvaHB
             this.bindingNavigatorMovePreviousItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMovePreviousItem.Image")));
             this.bindingNavigatorMovePreviousItem.Name = "bindingNavigatorMovePreviousItem";
             this.bindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(29, 28);
+            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(29, 24);
             this.bindingNavigatorMovePreviousItem.Text = "Mover anterior";
             // 
             // bindingNavigatorSeparator
             // 
             this.bindingNavigatorSeparator.Name = "bindingNavigatorSeparator";
-            this.bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 31);
+            this.bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 27);
             // 
             // bindingNavigatorPositionItem
             // 
@@ -179,14 +181,14 @@ namespace SGReservadorSalvaHB
             this.bindingNavigatorPositionItem.AutoSize = false;
             this.bindingNavigatorPositionItem.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
-            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 27);
+            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(49, 27);
             this.bindingNavigatorPositionItem.Text = "0";
             this.bindingNavigatorPositionItem.ToolTipText = "Posición actual";
             // 
             // bindingNavigatorSeparator1
             // 
             this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
-            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 31);
+            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 27);
             // 
             // bindingNavigatorMoveNextItem
             // 
@@ -194,7 +196,7 @@ namespace SGReservadorSalvaHB
             this.bindingNavigatorMoveNextItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveNextItem.Image")));
             this.bindingNavigatorMoveNextItem.Name = "bindingNavigatorMoveNextItem";
             this.bindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(29, 28);
+            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(29, 24);
             this.bindingNavigatorMoveNextItem.Text = "Mover siguiente";
             // 
             // bindingNavigatorMoveLastItem
@@ -203,13 +205,13 @@ namespace SGReservadorSalvaHB
             this.bindingNavigatorMoveLastItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveLastItem.Image")));
             this.bindingNavigatorMoveLastItem.Name = "bindingNavigatorMoveLastItem";
             this.bindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(29, 28);
+            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(29, 24);
             this.bindingNavigatorMoveLastItem.Text = "Mover último";
             // 
             // bindingNavigatorSeparator2
             // 
             this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
-            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 31);
+            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 27);
             // 
             // bindingNavigatorDeleteItem
             // 
@@ -217,7 +219,7 @@ namespace SGReservadorSalvaHB
             this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
             this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
             this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(29, 28);
+            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(29, 24);
             this.bindingNavigatorDeleteItem.Text = "Eliminar";
             this.bindingNavigatorDeleteItem.Click += new System.EventHandler(this.bindingNavigatorDeleteItem_Click);
             // 
@@ -226,7 +228,7 @@ namespace SGReservadorSalvaHB
             this.aULASBindingNavigatorSaveItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.aULASBindingNavigatorSaveItem.Image = ((System.Drawing.Image)(resources.GetObject("aULASBindingNavigatorSaveItem.Image")));
             this.aULASBindingNavigatorSaveItem.Name = "aULASBindingNavigatorSaveItem";
-            this.aULASBindingNavigatorSaveItem.Size = new System.Drawing.Size(29, 28);
+            this.aULASBindingNavigatorSaveItem.Size = new System.Drawing.Size(29, 24);
             this.aULASBindingNavigatorSaveItem.Text = "Guardar datos";
             this.aULASBindingNavigatorSaveItem.Click += new System.EventHandler(this.aULASBindingNavigatorSaveItem_Click);
             // 
@@ -234,6 +236,7 @@ namespace SGReservadorSalvaHB
             // 
             this.cod_aulaTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.aULASBindingSource, "Cod_aula", true));
             this.cod_aulaTextBox.Location = new System.Drawing.Point(435, 226);
+            this.cod_aulaTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cod_aulaTextBox.Name = "cod_aulaTextBox";
             this.cod_aulaTextBox.Size = new System.Drawing.Size(341, 22);
             this.cod_aulaTextBox.TabIndex = 2;
@@ -242,6 +245,7 @@ namespace SGReservadorSalvaHB
             // 
             this.descripcionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.aULASBindingSource, "Descripcion", true));
             this.descripcionTextBox.Location = new System.Drawing.Point(435, 272);
+            this.descripcionTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.descripcionTextBox.Name = "descripcionTextBox";
             this.descripcionTextBox.Size = new System.Drawing.Size(341, 22);
             this.descripcionTextBox.TabIndex = 4;
@@ -250,6 +254,7 @@ namespace SGReservadorSalvaHB
             // 
             this.fotoPictureBox.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.aULASBindingSource, "Foto", true));
             this.fotoPictureBox.Location = new System.Drawing.Point(435, 325);
+            this.fotoPictureBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.fotoPictureBox.Name = "fotoPictureBox";
             this.fotoPictureBox.Size = new System.Drawing.Size(341, 180);
             this.fotoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -259,6 +264,7 @@ namespace SGReservadorSalvaHB
             // btnImagen
             // 
             this.btnImagen.Location = new System.Drawing.Point(540, 511);
+            this.btnImagen.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnImagen.Name = "btnImagen";
             this.btnImagen.Size = new System.Drawing.Size(136, 23);
             this.btnImagen.TabIndex = 7;
@@ -283,12 +289,22 @@ namespace SGReservadorSalvaHB
             this.tableAdapterManager.UpdateOrder = SGReservadorSalvaHB.reservadorDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             this.tableAdapterManager.USUARIOSTableAdapter = null;
             // 
+            // borradoTextBox
+            // 
+            this.borradoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.aULASBindingSource, "Borrado", true));
+            this.borradoTextBox.Location = new System.Drawing.Point(1091, 738);
+            this.borradoTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.borradoTextBox.Name = "borradoTextBox";
+            this.borradoTextBox.Size = new System.Drawing.Size(23, 22);
+            this.borradoTextBox.TabIndex = 9;
+            // 
             // FormAdmAulas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1172, 802);
+            this.Controls.Add(this.borradoTextBox);
             this.Controls.Add(this.btnImagen);
             this.Controls.Add(fotoLabel);
             this.Controls.Add(this.fotoPictureBox);
@@ -298,6 +314,7 @@ namespace SGReservadorSalvaHB
             this.Controls.Add(this.cod_aulaTextBox);
             this.Controls.Add(this.aULASBindingNavigator);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FormAdmAulas";
             this.Text = "FormAdmAulas";
             this.Load += new System.EventHandler(this.FormAdmAulas_Load);
@@ -336,5 +353,6 @@ namespace SGReservadorSalvaHB
         private System.Windows.Forms.PictureBox fotoPictureBox;
         private System.Windows.Forms.Button btnImagen;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.TextBox borradoTextBox;
     }
 }

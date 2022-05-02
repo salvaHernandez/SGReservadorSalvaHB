@@ -111,6 +111,7 @@
     <Compile Include="FormReservas.Designer.cs">
       <DependentUpon>FormReservas.cs</DependentUpon>
     </Compile>
+    <Compile Include="GlobalVaribleClass.cs" />
     <Compile Include="PERFILES.cs">
       <DependentUpon>EntityReservadorLQ.tt</DependentUpon>
     </Compile>
