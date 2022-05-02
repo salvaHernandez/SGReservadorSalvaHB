@@ -36,10 +36,6 @@ namespace SGReservadorSalvaHB
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.dtgvUser = new System.Windows.Forms.DataGridView();
-            this.dtgNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dtgPassword = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dtgEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dtgPerfil = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnInsertar = new System.Windows.Forms.Button();
             this.btnBorrar = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -82,6 +78,7 @@ namespace SGReservadorSalvaHB
             // txtLogin
             // 
             this.txtLogin.Location = new System.Drawing.Point(213, 93);
+            this.txtLogin.MaxLength = 10;
             this.txtLogin.Name = "txtLogin";
             this.txtLogin.Size = new System.Drawing.Size(171, 20);
             this.txtLogin.TabIndex = 6;
@@ -89,6 +86,7 @@ namespace SGReservadorSalvaHB
             // txtEmail
             // 
             this.txtEmail.Location = new System.Drawing.Point(213, 157);
+            this.txtEmail.MaxLength = 255;
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(171, 20);
             this.txtEmail.TabIndex = 7;
@@ -96,6 +94,7 @@ namespace SGReservadorSalvaHB
             // txtPassword
             // 
             this.txtPassword.Location = new System.Drawing.Point(572, 93);
+            this.txtPassword.MaxLength = 10;
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(171, 20);
@@ -111,11 +110,6 @@ namespace SGReservadorSalvaHB
             this.dtgvUser.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dtgvUser.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             this.dtgvUser.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgvUser.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dtgNombre,
-            this.dtgPassword,
-            this.dtgEmail,
-            this.dtgPerfil});
             this.dtgvUser.Location = new System.Drawing.Point(32, 342);
             this.dtgvUser.MultiSelect = false;
             this.dtgvUser.Name = "dtgvUser";
@@ -125,30 +119,6 @@ namespace SGReservadorSalvaHB
             this.dtgvUser.Size = new System.Drawing.Size(813, 181);
             this.dtgvUser.TabIndex = 9;
             this.dtgvUser.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvUser_CellClick);
-            // 
-            // dtgNombre
-            // 
-            this.dtgNombre.HeaderText = "Nombre";
-            this.dtgNombre.Name = "dtgNombre";
-            this.dtgNombre.ReadOnly = true;
-            // 
-            // dtgPassword
-            // 
-            this.dtgPassword.HeaderText = "Password";
-            this.dtgPassword.Name = "dtgPassword";
-            this.dtgPassword.ReadOnly = true;
-            // 
-            // dtgEmail
-            // 
-            this.dtgEmail.HeaderText = "Email";
-            this.dtgEmail.Name = "dtgEmail";
-            this.dtgEmail.ReadOnly = true;
-            // 
-            // dtgPerfil
-            // 
-            this.dtgPerfil.HeaderText = "Perfil";
-            this.dtgPerfil.Name = "dtgPerfil";
-            this.dtgPerfil.ReadOnly = true;
             // 
             // btnInsertar
             // 
@@ -260,10 +230,6 @@ namespace SGReservadorSalvaHB
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.DataGridView dtgvUser;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dtgNombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dtgPassword;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dtgEmail;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dtgPerfil;
         private System.Windows.Forms.Button btnInsertar;
         private System.Windows.Forms.Button btnBorrar;
         private System.Windows.Forms.Label label2;

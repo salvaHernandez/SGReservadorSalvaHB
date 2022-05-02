@@ -24,15 +24,25 @@ namespace SGReservadorSalvaHB
 
         private void CargarPerfiles()
         {
-            reservadorDataSetTableAdapters.PERFILESTableAdapter taReservas = new reservadorDataSetTableAdapters.PERFILESTableAdapter();
-            taReservas.FillByOrdenAlfa(dsbd.PERFILES);
-            perfiles = new string[dsbd.PERFILES.Count];
-            idPerfiles = new int[dsbd.PERFILES.Count];
-            for (int i = 0; i < dsbd.PERFILES.Count; i++)
+            using (reservadorEntitiesLQ objBD = new reservadorEntitiesLQ())
             {
-                perfiles[i] = dsbd.PERFILES[i].Descripcion;
-                idPerfiles[i] = dsbd.PERFILES[i].Id_Perfil;
-                cmbPerfil.Items.Add(perfiles[i]);
+                var perfi = from perf in objBD.PERFILES
+                               select new
+                               {
+                                   perf.Descripcion,
+                                   perf.Id_Perfil
+                               };
+
+                var totalPerf = perfi.ToList();
+                perfiles = new string[totalPerf.Count];
+                idPerfiles = new int[totalPerf.Count];
+
+                for (int i = 0; i < totalPerf.Count; i++)
+                {
+                    cmbPerfil.Items.Add(totalPerf[i].Descripcion);
+                    perfiles[i] = totalPerf[i].Descripcion;
+                    idPerfiles[i] = totalPerf[i].Id_Perfil;
+                }
             }
         }
 
@@ -55,13 +65,14 @@ namespace SGReservadorSalvaHB
                 DialogResult resp = MessageBox.Show("¿Esta seguro de querer eliminar este Usuario?", "BORRAR", MessageBoxButtons.YesNo, MessageBoxIcon.Hand);
                 if (resp == DialogResult.Yes)
                 {
-                    reservadorDataSetTableAdapters.USUARIOSTableAdapter taUsuarios = new reservadorDataSetTableAdapters.USUARIOSTableAdapter();
-                    taUsuarios.UpdateDelete(-1, dtgvUser.SelectedRows[0].Cells[0].Value.ToString());
-                    if (dsbd.USUARIOS.Count > 0)
+                    using (reservadorEntitiesLQ objBD = new reservadorEntitiesLQ())
                     {
-                        MessageBox.Show("Usuario " + dtgvUser.SelectedRows[0].Cells[0].Value.ToString() + " Borrado");
-                        CargaDtgv();
+                        USUARIOS user = objBD.USUARIOS.Find(dtgvUser.SelectedRows[0].Cells[0].Value.ToString());
+                        user.Borrado = -1;
+                        objBD.SaveChanges();
                     }
+                    MessageBox.Show("Usuario " + dtgvUser.SelectedRows[0].Cells[0].Value.ToString() + " Borrado");
+                    CargaDtgv();
                 }
             } else MessageBox.Show("Para borrar un usuario tienes que seleccionar uno de la tabla");
             
@@ -75,13 +86,16 @@ namespace SGReservadorSalvaHB
                 DialogResult resp = MessageBox.Show("¿Esta seguro de querer modificar este Usuario?", "MODIFICAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (resp == DialogResult.Yes)
                 {
-                    reservadorDataSetTableAdapters.USUARIOSTableAdapter taUsuarios = new reservadorDataSetTableAdapters.USUARIOSTableAdapter();
-                    int perf = idPerfiles[cmbPerfil.SelectedIndex];
-                    taUsuarios.UpdateUsuario(txtPassword.Text, txtEmail.Text, perf, txtLogin.Text);
-                    if (dsbd.USUARIOS.Count > 0)
+                    using (reservadorEntitiesLQ objBD = new reservadorEntitiesLQ())
                     {
-                        CargaDtgv();
+                        USUARIOS user = objBD.USUARIOS.Find(dtgvUser.SelectedRows[0].Cells[0].Value.ToString());
+                        user.Password = txtPassword.Text;
+                        user.Email = txtEmail.Text;
+                        int perfil = idPerfiles[cmbPerfil.SelectedIndex];
+                        user.Perfil = perfil;
+                        objBD.SaveChanges();
                     }
+                    CargaDtgv();
                 }
             }
         }
@@ -101,17 +115,32 @@ namespace SGReservadorSalvaHB
         {
             if (compruebaTxt())
             {
-                reservadorDataSetTableAdapters.USUARIOSTableAdapter taUsuarios = new reservadorDataSetTableAdapters.USUARIOSTableAdapter();
-                taUsuarios.FillByAloneLogin(dsbd.USUARIOS, txtLogin.Text);
-
-                if (dsbd.USUARIOS.Count < 1)
+                using (reservadorEntitiesLQ objBD = new reservadorEntitiesLQ())
                 {
-                    int perfil = cmbPerfil.SelectedIndex + 1;
-                    taUsuarios.InsertUsuario(txtLogin.Text, txtPassword.Text, txtEmail.Text, perfil, 0);
-                    CargaDtgv();
-                }
-                else MessageBox.Show("El usuario " + txtLogin.Text + " ya existe, cambialo");
+                    USUARIOS usuario = objBD.USUARIOS.Create();
 
+                    var userExiste = from us in objBD.USUARIOS
+                                     where us.Login == txtLogin.Text
+                                     select us.Login;
+
+                    if (userExiste.Count() > 0)
+                    {
+                        MessageBox.Show("El usuario "+ txtLogin.Text +" ya existe");
+                    } else
+                    {
+                        usuario.Login = txtLogin.Text;
+                        usuario.Password = txtPassword.Text;
+                        MessageBox.Show(idPerfiles[cmbPerfil.SelectedIndex].ToString()+" "+ txtPassword.Text);
+                        usuario.Perfil = idPerfiles[cmbPerfil.SelectedIndex];
+                        usuario.Email = txtEmail.Text;
+                        usuario.Borrado = 0;
+
+                        objBD.USUARIOS.Add(usuario);
+                        objBD.SaveChanges();
+                        MessageBox.Show("Usuario registrado correctamente");
+                        CargaDtgv();
+                    }
+                }
             }
         }
 
@@ -156,33 +185,27 @@ namespace SGReservadorSalvaHB
         private void btnMostrartodos_Click(object sender, EventArgs e)
         {
             limpiarTXT();
-
             CargaDtgv();
-
         }
 
 
         private void CargaDtgv ()
         {
-            dtgvUser.Rows.Clear();
 
-            reservadorDataSetTableAdapters.USUARIOSTableAdapter taUsuarios = new reservadorDataSetTableAdapters.USUARIOSTableAdapter();
-            taUsuarios.Fill(dsbd.USUARIOS, 0);
-
-            for (int i = 0; i < dsbd.USUARIOS.Count; i++)
+            using (reservadorEntitiesLQ objBD = new reservadorEntitiesLQ())
             {
-                dtgvUser.Rows.Add("");
-                dtgvUser.Rows[i].Cells[0].Value = dsbd.USUARIOS[i].Login;
-                dtgvUser.Rows[i].Cells[1].Value = dsbd.USUARIOS[i].Password;
-                dtgvUser.Rows[i].Cells[2].Value = dsbd.USUARIOS[i].Email;
-
-
-                reservadorDataSetTableAdapters.PERFILESTableAdapter taPerfiles = new reservadorDataSetTableAdapters.PERFILESTableAdapter();
-                
-
-                dtgvUser.Rows[i].Cells[3].Value = taPerfiles.SQLnombrePerfil(dsbd.USUARIOS[i].Perfil);
+                var usuariosNoBorrados = from us in objBD.USUARIOS
+                                         from rol in objBD.PERFILES
+                                         where us.Borrado == 0 && us.Perfil == rol.Id_Perfil
+                                         select new
+                                         {
+                                             us.Login,
+                                             us.Password,
+                                             us.Email,
+                                             rol.Descripcion
+                                         };
+            dtgvUser.DataSource = usuariosNoBorrados.ToList();
             }
-
         }
     }
 }
