@@ -63,7 +63,6 @@ namespace SGReservadorSalvaHB
                                     orderby aul.Descripcion
                                     select aul.Cod_aula;
 
-                MessageBox.Show(aulasBorradas.Count().ToString());
                 if (aulasBorradas.Count() > 0)
                 {
                     var reservasPorGrupo = from r in objBD.RESERVAS
@@ -90,6 +89,9 @@ namespace SGReservadorSalvaHB
 
                     dataGridView1.DataSource = consultaFinal.ToList();
 
+                } else
+                {
+                    MessageBox.Show("La consulta no tiene registros que mostrar");
                 }
             }
         }

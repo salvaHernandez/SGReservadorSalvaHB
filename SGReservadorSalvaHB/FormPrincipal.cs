@@ -92,15 +92,24 @@ namespace SGReservadorSalvaHB
 
         private void informesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
-            if (this.MdiChildren.Length > 0 && this.MdiChildren[0].Name != "FormInformes")
+            if (this.MdiChildren.Length > 0)
             {
-                this.MdiChildren[0].Close();
+                if (this.MdiChildren[0].Name != "FormInformes")
+                {
+                    this.MdiChildren[0].Close();
+                    FormInformes infForm = new FormInformes();
+                    infForm.MdiParent = this;
+                    infForm.Dock = DockStyle.Fill;
+                    infForm.Show();
+                }
+            } else
+            {
+                FormInformes infForm1 = new FormInformes();
+                infForm1.MdiParent = this;
+                infForm1.Dock = DockStyle.Fill;
+                infForm1.Show();
             }
-            FormInformes s = new FormInformes();
-            s.MdiParent = this;
-            s.Dock = DockStyle.Fill;
-            s.Show();
+
 
         }
     }
