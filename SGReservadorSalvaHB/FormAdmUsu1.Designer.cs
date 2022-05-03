@@ -42,6 +42,7 @@ namespace SGReservadorSalvaHB
             this.cmbPerfil = new System.Windows.Forms.ComboBox();
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnMostrartodos = new System.Windows.Forms.Button();
+            this.btnLimpiar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvUser)).BeginInit();
             this.SuspendLayout();
             // 
@@ -186,7 +187,7 @@ namespace SGReservadorSalvaHB
             this.btnMostrartodos.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
             this.btnMostrartodos.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnMostrartodos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMostrartodos.Location = new System.Drawing.Point(357, 292);
+            this.btnMostrartodos.Location = new System.Drawing.Point(359, 292);
             this.btnMostrartodos.Name = "btnMostrartodos";
             this.btnMostrartodos.Size = new System.Drawing.Size(125, 23);
             this.btnMostrartodos.TabIndex = 17;
@@ -194,11 +195,26 @@ namespace SGReservadorSalvaHB
             this.btnMostrartodos.UseVisualStyleBackColor = true;
             this.btnMostrartodos.Click += new System.EventHandler(this.btnMostrartodos_Click);
             // 
+            // btnLimpiar
+            // 
+            this.btnLimpiar.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnLimpiar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.btnLimpiar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLimpiar.Location = new System.Drawing.Point(359, 228);
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.Size = new System.Drawing.Size(125, 23);
+            this.btnLimpiar.TabIndex = 18;
+            this.btnLimpiar.Text = "LIMPIAR";
+            this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
+            // 
             // FormAdmUsu1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(879, 640);
+            this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.btnMostrartodos);
             this.Controls.Add(this.cmbPerfil);
             this.Controls.Add(this.label2);
@@ -236,5 +252,6 @@ namespace SGReservadorSalvaHB
         private System.Windows.Forms.ComboBox cmbPerfil;
         private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.Button btnMostrartodos;
+        private System.Windows.Forms.Button btnLimpiar;
     }
 }

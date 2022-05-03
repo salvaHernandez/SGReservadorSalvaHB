@@ -107,7 +107,7 @@ namespace SGReservadorSalvaHB
                 txtLogin.Text = dtgvUser.SelectedRows[0].Cells[0].Value.ToString();
                 txtPassword.Text = dtgvUser.SelectedRows[0].Cells[1].Value.ToString();
                 txtEmail.Text = dtgvUser.SelectedRows[0].Cells[2].Value.ToString();
-                cmbPerfil.SelectedItem = dtgvUser.SelectedRows[0].Cells[3].Value.ToString();
+                cmbPerfil.Text = dtgvUser.SelectedRows[0].Cells[3].Value.ToString();
             }
         }
 
@@ -206,6 +206,14 @@ namespace SGReservadorSalvaHB
                                          };
             dtgvUser.DataSource = usuariosNoBorrados.ToList();
             }
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            txtLogin.Text = "";
+            txtEmail.Text = "";
+            txtPassword.Text = "";
+            cmbPerfil.Text = "";
         }
     }
 }
