@@ -29,7 +29,7 @@ namespace SGReservadorSalvaHB
             pboxImagen.Visible = false;
             dtpkFecha.Enabled = false;
             btnReservar.Enabled = false;
-            //dtpkFecha.MinDate = DateTime.Today;
+            dtpkFecha.MinDate = DateTime.Today;
 
         }
 

@@ -34,15 +34,16 @@ namespace SGReservadorSalvaHB
                     }
                     else
                     {
-                        DialogResult resp = MessageBox.Show("¿Desea guardar los cambios?", "GUARDAR", MessageBoxButtons.YesNo, MessageBoxIcon.Hand);
+                        DialogResult resp = MessageBox.Show("¿Desea guardar los cambios?", "GUARDAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         if (resp == DialogResult.Yes)
                         {
                             this.Validate();
                             this.aULASBindingSource.EndEdit();
                             this.tableAdapterManager.UpdateAll(this.reservadorDataSet);
+                            bindingNavigatorAddNewItem.Enabled = true;
                         }
 
-                        bindingNavigatorAddNewItem.Enabled = true;
+                        
                     }
 
                 }
@@ -88,6 +89,7 @@ namespace SGReservadorSalvaHB
 
         private void bindingNavigatorDeleteItem_Click(object sender, EventArgs e)
         {
+            
             DialogResult resp = MessageBox.Show("¿Esta seguro de querer eliminar este Aula?", "BORRAR", MessageBoxButtons.YesNo, MessageBoxIcon.Hand);
             if (resp == DialogResult.Yes)
             {
@@ -97,6 +99,7 @@ namespace SGReservadorSalvaHB
 
                     reservadorDataSet.AULAS.Clear();
                     aULASTableAdapter.Fill(reservadorDataSet.AULAS);
+                    bindingNavigatorAddNewItem.Enabled = true;
 
             }
         }
