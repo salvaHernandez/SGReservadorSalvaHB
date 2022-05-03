@@ -54,6 +54,7 @@ namespace SGReservadorSalvaHB
             dtpkFecha.Enabled = true;
             aULASTableAdapter.FillByCodAula(reservadorDataSet.AULAS,""+ aULASTableAdapter.Cositas("" + CBX.Text));
             dtgvHorario.Rows.Clear();
+            btnReservar.Enabled = false;
 
             //CargarDataGridView(aULASTableAdapter.Cositas("" + CBX.Text), CBX.Text);
         }
@@ -93,6 +94,7 @@ namespace SGReservadorSalvaHB
         {
             //CargarDataGridView(aULASTableAdapter.Cositas("" + CBX.Text), CBX.Text);
             dtgvHorario.Rows.Clear();
+            btnReservar.Enabled = false;
 
         }
 
