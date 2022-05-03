@@ -53,6 +53,7 @@ namespace SGReservadorSalvaHB
             pboxImagen.Visible = true;
             dtpkFecha.Enabled = true;
             aULASTableAdapter.FillByCodAula(reservadorDataSet.AULAS,""+ aULASTableAdapter.Cositas("" + CBX.Text));
+            dtgvHorario.Rows.Clear();
 
             //CargarDataGridView(aULASTableAdapter.Cositas("" + CBX.Text), CBX.Text);
         }
